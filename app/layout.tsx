@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono, Fraunces } from 'next/font/google'
+import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/sonner'
@@ -13,12 +13,6 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
   variable: '--font-geist-mono',
 })
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  variable: '--font-fraunces',
-  axes: ['opsz', 'SOFT'],
-})
-
 export const metadata: Metadata = {
   title: 'Noticed — a quiet place for what you notice',
   description:
@@ -50,7 +44,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} bg-background`}
+      className={`${geistSans.variable} ${geistMono.variable} bg-background`}
     >
       <body className="font-sans antialiased">
         <ThemeProvider
