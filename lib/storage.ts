@@ -106,7 +106,7 @@ export async function readStorage<T>(key: string, fallback: T): Promise<T> {
     )
     return value === undefined ? fallback : value
   } catch (err) {
-    console.log('[v0] storage read failed:', (err as Error).message)
+    console.log('[noticed] storage read failed:', (err as Error).message)
     return fallback
   }
 }
@@ -116,7 +116,7 @@ export async function writeStorage<T>(key: string, value: T): Promise<void> {
   try {
     await idbRequest('readwrite', (store) => store.put(value, key))
   } catch (err) {
-    console.log('[v0] storage write failed:', (err as Error).message)
+    console.log('[noticed] storage write failed:', (err as Error).message)
     throw err
   }
 }
