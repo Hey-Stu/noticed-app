@@ -40,9 +40,13 @@ export function ObservationCard({
         {/* color block */}
         {observation.type === 'color' && observation.color ? (
           <div
-            className="flex h-28 items-end p-3"
+            className="relative flex h-28 items-end p-3"
             style={{ backgroundColor: observation.color }}
           >
+            <TypeBadge
+              type={observation.type}
+              className="absolute left-3 top-3 shadow-sm backdrop-blur"
+            />
             <span className="rounded-md bg-background/85 px-2 py-0.5 font-mono text-xs font-medium uppercase text-foreground backdrop-blur">
               {observation.color}
             </span>
@@ -61,8 +65,15 @@ export function ObservationCard({
         ) : null}
 
         <div className="flex flex-1 flex-col gap-2 p-4">
-          <div className="flex items-center justify-between gap-2">
-            <TypeBadge type={observation.type} />
+          <div
+            className={cn(
+              'flex items-center gap-2',
+              observation.type === 'color' ? 'justify-end' : 'justify-between',
+            )}
+          >
+            {observation.type !== 'color' ? (
+              <TypeBadge type={observation.type} />
+            ) : null}
             <time className="text-xs text-muted-foreground">{time}</time>
           </div>
 
