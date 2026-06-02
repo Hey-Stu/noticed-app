@@ -32,7 +32,6 @@ export function makeObservation(input: NewObservationInput): Observation {
     tags: normalizeTags(input.tags ?? []),
     createdAt: now,
     updatedAt: now,
-    favorite: false,
   }
 }
 
@@ -88,16 +87,74 @@ export function filterObservations(
   })
 
   result = [...result].sort((a, b) => {
-    if (sort === 'favorites') {
-      const fav = Number(b.favorite) - Number(a.favorite)
-      if (fav !== 0) return fav
-      return b.createdAt - a.createdAt
-    }
     if (sort === 'oldest') return a.createdAt - b.createdAt
     return b.createdAt - a.createdAt
   })
 
   return result
+}
+
+const OBSERVATION_TYPES: ObservationType[] = [
+  'text',
+  'image',
+  'link',
+  'color',
+  'quote',
+  'idea',
+]
+
+/**
+ * Validate and normalize a single observation coming from an imported file.
+ * Returns a clean Observation, or null if the record is unusable.
+ */
+export function sanitizeImportedObservation(raw: unknown): Observation | null {
+  if (!raw || typeof raw !== 'object') return null
+  const o = raw as Record<string, unknown>
+
+  const type = o.type
+  if (typeof type !== 'string' || !OBSERVATION_TYPES.includes(type as ObservationType)) {
+    return null
+  }
+
+  const str = (v: unknown): string | undefined =>
+    typeof v === 'string' && v.trim() ? v.trim() : undefined
+
+  const body = typeof o.body === 'string' ? o.body : ''
+  const tags = Array.isArray(o.tags)
+    ? normalizeTags(o.tags.filter((t): t is string => typeof t === 'string'))
+    : []
+
+  const createdAt =
+    typeof o.createdAt === 'number' && Number.isFinite(o.createdAt)
+      ? o.createdAt
+      : Date.now()
+  const updatedAt =
+    typeof o.updatedAt === 'number' && Number.isFinite(o.updatedAt)
+      ? o.updatedAt
+      : createdAt
+
+  // A record must carry *some* meaningful content to be worth importing.
+  const hasContent =
+    body.trim() ||
+    str(o.title) ||
+    str(o.url) ||
+    str(o.imageData) ||
+    str(o.color)
+  if (!hasContent) return null
+
+  return {
+    id: str(o.id) ?? createId(),
+    type: type as ObservationType,
+    body,
+    title: str(o.title),
+    url: str(o.url),
+    imageData: typeof o.imageData === 'string' ? o.imageData : undefined,
+    color: str(o.color),
+    source: str(o.source),
+    tags,
+    createdAt,
+    updatedAt,
+  }
 }
 
 /** A short, human-readable preview string for any observation. */

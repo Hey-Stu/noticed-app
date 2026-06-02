@@ -6,7 +6,11 @@ import {
   writeStorage,
   STORAGE_KEYS,
 } from './storage'
-import { makeObservation, type NewObservationInput } from './observations'
+import {
+  makeObservation,
+  sanitizeImportedObservation,
+  type NewObservationInput,
+} from './observations'
 import { buildSampleObservations } from './sample-data'
 
 const DEFAULT_SETTINGS: NoticedSettings = {
@@ -150,4 +154,83 @@ export function clearAll(): void {
   persistObservations([])
   persistSettings(settings)
   setState({ observations: [], settings })
+}
+
+// ---- Import / Export -------------------------------------------------------
+
+export const EXPORT_VERSION = 1
+
+export interface ExportPayload {
+  app: 'noticed'
+  version: number
+  exportedAt: string
+  observations: Observation[]
+}
+
+/** Serializable snapshot of the user's library for backup/transfer. */
+export function exportData(): ExportPayload {
+  return {
+    app: 'noticed',
+    version: EXPORT_VERSION,
+    exportedAt: new Date().toISOString(),
+    observations: state.observations,
+  }
+}
+
+export interface ImportResult {
+  added: number
+  skipped: number
+}
+
+/**
+ * Merge observations from a previously exported JSON string into the library.
+ * Records whose id already exists are skipped (non-destructive). Throws on
+ * malformed input so the caller can surface a friendly error.
+ */
+export function importData(rawJson: string): ImportResult {
+  let parsed: unknown
+  try {
+    parsed = JSON.parse(rawJson)
+  } catch {
+    throw new Error('That file isn\u2019t valid JSON.')
+  }
+
+  const candidates: unknown[] = Array.isArray(parsed)
+    ? parsed
+    : Array.isArray((parsed as { observations?: unknown })?.observations)
+      ? ((parsed as { observations: unknown[] }).observations)
+      : []
+
+  if (candidates.length === 0) {
+    throw new Error('No observations were found in that file.')
+  }
+
+  const existingIds = new Set(state.observations.map((o) => o.id))
+  const incoming: Observation[] = []
+  let skipped = 0
+
+  for (const candidate of candidates) {
+    const clean = sanitizeImportedObservation(candidate)
+    if (!clean || existingIds.has(clean.id)) {
+      skipped += 1
+      continue
+    }
+    existingIds.add(clean.id)
+    incoming.push(clean)
+  }
+
+  if (incoming.length === 0) {
+    return { added: 0, skipped }
+  }
+
+  const next = [...incoming, ...state.observations].sort(
+    (a, b) => b.createdAt - a.createdAt,
+  )
+  persistObservations(next)
+  // Importing real notes means an empty library shouldn't be re-seeded.
+  const settings = { ...state.settings, samplesCleared: true }
+  persistSettings(settings)
+  setState({ observations: next, settings })
+
+  return { added: incoming.length, skipped }
 }

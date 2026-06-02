@@ -1,9 +1,18 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTheme } from 'next-themes'
 import { toast } from 'sonner'
-import { Sun, Moon, Monitor, Database, RotateCcw, Trash2 } from 'lucide-react'
+import {
+  Sun,
+  Moon,
+  Monitor,
+  Database,
+  RotateCcw,
+  Trash2,
+  Download,
+  Upload,
+} from 'lucide-react'
 import { PageHeader } from '@/components/page-header'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
@@ -60,9 +69,65 @@ function formatBytes(bytes: number): string {
 
 export default function SettingsPage() {
   const { theme, setTheme } = useTheme()
-  const { observations, hydrated, reloadSamples, clearAll } = useObservations()
+  const {
+    observations,
+    hydrated,
+    reloadSamples,
+    clearAll,
+    exportData,
+    importData,
+  } = useObservations()
   const [mounted, setMounted] = useState(false)
   const [size, setSize] = useState(0)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  function handleExport() {
+    const payload = exportData()
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {
+      type: 'application/json',
+    })
+    const url = URL.createObjectURL(blob)
+    const stamp = new Date().toISOString().slice(0, 10)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `noticed-backup-${stamp}.json`
+    document.body.appendChild(a)
+    a.click()
+    a.remove()
+    URL.revokeObjectURL(url)
+    toast.success('Library exported', {
+      description: `${payload.observations.length} ${
+        payload.observations.length === 1 ? 'note' : 'notes'
+      } saved to your downloads.`,
+    })
+  }
+
+  async function handleImportFile(file: File) {
+    try {
+      const text = await file.text()
+      const { added, skipped } = importData(text)
+      if (added === 0) {
+        toast('Nothing new to import', {
+          description:
+            skipped > 0
+              ? 'Every note in that file is already in your library.'
+              : 'No new observations were found.',
+        })
+        return
+      }
+      toast.success(`Imported ${added} ${added === 1 ? 'note' : 'notes'}`, {
+        description:
+          skipped > 0
+            ? `${skipped} duplicate ${skipped === 1 ? 'note was' : 'notes were'} skipped.`
+            : 'Your observations were merged into the library.',
+      })
+    } catch (err) {
+      toast.error('Import failed', {
+        description:
+          err instanceof Error ? err.message : 'That file could not be read.',
+      })
+    }
+  }
 
   useEffect(() => setMounted(true), [])
   useEffect(() => {
@@ -130,6 +195,44 @@ export default function SettingsPage() {
               {observations.length === 1 ? 'note' : 'notes'} ·{' '}
               {hydrated ? formatBytes(size) : '—'}
             </span>
+          </div>
+        </SettingsRow>
+
+        <Separator />
+
+        {/* import / export */}
+        <SettingsRow
+          title="Import & export"
+          description="Noticed keeps everything on this device only. Export a JSON backup to keep your notes safe or move them to another browser or device, then import it later to bring them back. Importing merges notes in and skips any duplicates."
+        >
+          <div className="flex flex-wrap gap-2">
+            <Button
+              variant="outline"
+              onClick={handleExport}
+              disabled={!hydrated || observations.length === 0}
+            >
+              <Download className="size-4" />
+              Export JSON
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => fileInputRef.current?.click()}
+            >
+              <Upload className="size-4" />
+              Import JSON
+            </Button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="application/json,.json"
+              className="sr-only"
+              onChange={(e) => {
+                const file = e.target.files?.[0]
+                if (file) void handleImportFile(file)
+                // allow re-importing the same file name later
+                e.target.value = ''
+              }}
+            />
           </div>
         </SettingsRow>
 

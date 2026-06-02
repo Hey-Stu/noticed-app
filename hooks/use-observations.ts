@@ -11,6 +11,8 @@ import {
   updateSettings,
   reloadSamples,
   clearAll,
+  exportData,
+  importData,
 } from '@/lib/store'
 
 const SERVER_SNAPSHOT = {
@@ -44,5 +46,7 @@ export function useObservations() {
     updateSettings,
     reloadSamples,
     clearAll,
+    exportData,
+    importData,
   }
 }
