@@ -31,7 +31,7 @@ export function useObservations() {
   )
 
   useEffect(() => {
-    hydrate()
+    void hydrate()
   }, [])
 
   return {

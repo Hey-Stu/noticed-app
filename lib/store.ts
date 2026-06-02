@@ -39,39 +39,51 @@ function setState(partial: Partial<StoreState>) {
 }
 
 function persistObservations(observations: Observation[]) {
-  try {
-    writeStorage(STORAGE_KEYS.observations, observations)
-  } catch {
-    // surfaced by callers via toast
-    throw new Error('storage-quota')
-  }
+  // Fire-and-forget: in-memory state is the synchronous source of truth,
+  // while IndexedDB writes settle in the background.
+  void writeStorage(STORAGE_KEYS.observations, observations).catch((err) => {
+    console.log('[v0] persist observations failed:', (err as Error).message)
+  })
 }
 
 function persistSettings(settings: NoticedSettings) {
-  writeStorage(STORAGE_KEYS.settings, settings)
+  void writeStorage(STORAGE_KEYS.settings, settings).catch((err) => {
+    console.log('[v0] persist settings failed:', (err as Error).message)
+  })
 }
 
+let hydrating: Promise<void> | null = null
+
 /** Load persisted data; seed samples on first ever run. */
-export function hydrate() {
-  if (state.hydrated) return
-  const settings = readStorage<NoticedSettings>(
-    STORAGE_KEYS.settings,
-    DEFAULT_SETTINGS,
-  )
-  let observations = readStorage<Observation[]>(STORAGE_KEYS.observations, [])
+export function hydrate(): Promise<void> {
+  if (state.hydrated) return Promise.resolve()
+  if (hydrating) return hydrating
 
-  // Seed the curated examples whenever the library is empty and the user
-  // hasn't *explicitly* cleared everything via Settings. This auto-heals any
-  // stuck "empty + already-seeded" states instead of leaving a blank Library.
-  let nextSettings = settings
-  if (!settings.samplesCleared && observations.length === 0) {
-    observations = buildSampleObservations()
-    persistObservations(observations)
-    nextSettings = { ...settings, samplesSeeded: true }
-    persistSettings(nextSettings)
-  }
+  hydrating = (async () => {
+    const settings = await readStorage<NoticedSettings>(
+      STORAGE_KEYS.settings,
+      DEFAULT_SETTINGS,
+    )
+    let observations = await readStorage<Observation[]>(
+      STORAGE_KEYS.observations,
+      [],
+    )
 
-  setState({ observations, settings: nextSettings, hydrated: true })
+    // Seed the curated examples whenever the library is empty and the user
+    // hasn't *explicitly* cleared everything via Settings. This auto-heals any
+    // stuck "empty + already-seeded" states instead of leaving a blank Library.
+    let nextSettings = settings
+    if (!settings.samplesCleared && observations.length === 0) {
+      observations = buildSampleObservations()
+      persistObservations(observations)
+      nextSettings = { ...settings, samplesSeeded: true }
+      persistSettings(nextSettings)
+    }
+
+    setState({ observations, settings: nextSettings, hydrated: true })
+  })()
+
+  return hydrating
 }
 
 export function subscribe(listener: () => void): () => void {

@@ -66,7 +66,14 @@ export default function SettingsPage() {
 
   useEffect(() => setMounted(true), [])
   useEffect(() => {
-    if (hydrated) setSize(approximateStorageSize())
+    if (!hydrated) return
+    let active = true
+    void approximateStorageSize().then((bytes) => {
+      if (active) setSize(bytes)
+    })
+    return () => {
+      active = false
+    }
   }, [hydrated, observations])
 
   return (
