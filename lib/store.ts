@@ -11,7 +11,7 @@ import {
   sanitizeImportedObservation,
   type NewObservationInput,
 } from './observations'
-import { buildSampleObservations } from './sample-data'
+import { buildSampleObservations, SAMPLE_BODIES } from './sample-data'
 
 const DEFAULT_SETTINGS: NoticedSettings = {
   onboardingDismissed: false,
@@ -72,6 +72,19 @@ export function hydrate(): Promise<void> {
       STORAGE_KEYS.observations,
       [],
     )
+
+    // Backfill the `sample` marker for libraries seeded before the flag
+    // existed, so "Clear samples" can tell examples apart from real notes.
+    // Curated seed bodies are unique, so matching on body is reliable.
+    let migrated = false
+    observations = observations.map((o) => {
+      if (o.sample === undefined && SAMPLE_BODIES.has(o.body)) {
+        migrated = true
+        return { ...o, sample: true }
+      }
+      return o
+    })
+    if (migrated) persistObservations(observations)
 
     // Seed the curated examples whenever the library is empty and the user
     // hasn't *explicitly* cleared everything via Settings. This auto-heals any

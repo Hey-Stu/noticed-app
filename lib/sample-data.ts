@@ -125,6 +125,12 @@ const SEEDS: Seed[] = [
   },
 ]
 
+/** The exact body strings used by the curated seeds. Used to retro-flag
+ *  samples that were stored before the `sample` marker existed. */
+export const SAMPLE_BODIES: ReadonlySet<string> = new Set(
+  SEEDS.map((s) => s.body),
+)
+
 export function buildSampleObservations(): Observation[] {
   const now = Date.now()
   return SEEDS.map((seed) => {
