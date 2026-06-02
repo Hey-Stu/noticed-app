@@ -60,8 +60,11 @@ export function hydrate() {
   )
   let observations = readStorage<Observation[]>(STORAGE_KEYS.observations, [])
 
+  // Seed the curated examples whenever the library is empty and the user
+  // hasn't *explicitly* cleared everything via Settings. This auto-heals any
+  // stuck "empty + already-seeded" states instead of leaving a blank Library.
   let nextSettings = settings
-  if (!settings.samplesSeeded && !settings.samplesCleared && observations.length === 0) {
+  if (!settings.samplesCleared && observations.length === 0) {
     observations = buildSampleObservations()
     persistObservations(observations)
     nextSettings = { ...settings, samplesSeeded: true }
