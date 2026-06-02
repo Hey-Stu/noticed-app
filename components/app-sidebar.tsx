@@ -21,7 +21,6 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
 import { ThemeToggle } from '@/components/theme-toggle'
-import { useObservations } from '@/hooks/use-observations'
 
 const NAV = [
   { title: 'Library', href: '/', icon: BookOpen, hint: 'Everything you noticed' },
@@ -48,7 +47,6 @@ function BrandMark() {
 
 export function AppSidebar() {
   const pathname = usePathname()
-  const { observations, hydrated } = useObservations()
 
   return (
     <Sidebar className="border-r border-sidebar-border">
@@ -60,9 +58,7 @@ export function AppSidebar() {
               Noticed
             </span>
             <span className="text-xs text-muted-foreground">
-              {hydrated
-                ? `${observations.length} ${observations.length === 1 ? 'observation' : 'observations'}`
-                : 'a field journal'}
+              a field journal
             </span>
           </div>
         </div>
