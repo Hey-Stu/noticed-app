@@ -135,67 +135,62 @@ export default function SettingsPage() {
 
         <Separator />
 
-        {/* reload samples */}
+        {/* samples + start fresh */}
         <SettingsRow
           title="Sample observations"
-          description="Add the curated example notes back into your library to explore the app. Your own notes are kept."
+          description="Reload the curated example notes to explore the app (your own notes are kept), or clear everything and start from a blank slate."
         >
-          <Button
-            variant="outline"
-            onClick={() => {
-              reloadSamples()
-              toast.success('Samples added', {
-                description: 'The example observations are back in your library.',
-              })
-            }}
-          >
-            <RotateCcw className="size-4" />
-            Reload samples
-          </Button>
-        </SettingsRow>
+          <div className="flex flex-wrap gap-2">
+            <Button
+              variant="outline"
+              onClick={() => {
+                reloadSamples()
+                toast.success('Samples added', {
+                  description:
+                    'The example observations are back in your library.',
+                })
+              }}
+            >
+              <RotateCcw className="size-4" />
+              Reload samples
+            </Button>
 
-        <Separator />
-
-        {/* danger zone */}
-        <SettingsRow
-          title="Clear everything"
-          description="Permanently remove all observations from this device. There's no undo, and nothing is backed up."
-        >
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button
-                variant="outline"
-                className="border-destructive/40 text-destructive hover:bg-destructive/10 hover:text-destructive"
-              >
-                <Trash2 className="size-4" />
-                Clear all data
-              </Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Clear your whole library?</AlertDialogTitle>
-                <AlertDialogDescription>
-                  This removes every observation stored on this device. It
-                  can&apos;t be undone. Samples won&apos;t return automatically,
-                  but you can reload them anytime from Settings.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Keep my notes</AlertDialogCancel>
-                <AlertDialogAction
-                  onClick={() => {
-                    clearAll()
-                    toast('Library cleared', {
-                      description: 'A clean slate. Notice something new.',
-                    })
-                  }}
-                  className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="border-destructive/40 text-destructive hover:bg-destructive/10 hover:text-destructive"
                 >
-                  Clear everything
-                </AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+                  <Trash2 className="size-4" />
+                  Clear all & start fresh
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Clear your whole library?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This removes every observation stored on this device,
+                    including the samples. It can&apos;t be undone and nothing is
+                    backed up. You can reload the samples anytime from Settings.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Keep my notes</AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={() => {
+                      clearAll()
+                      toast('Library cleared', {
+                        description: 'A clean slate. Notice something new.',
+                      })
+                    }}
+                    className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                  >
+                    Clear everything
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </div>
         </SettingsRow>
       </div>
 
