@@ -1,6 +1,6 @@
 'use client'
 
-import { Search, X, ArrowDownWide } from 'lucide-react'
+import { Search, X, ArrowDownNarrowWide } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import {
   Select,
@@ -62,7 +62,7 @@ export function LibraryToolbar({
         </div>
         <Select value={sort} onValueChange={(v) => onSortChange(v as SortOption)}>
           <SelectTrigger className="h-10 w-full sm:w-44">
-            <ArrowDownWide className="size-4 text-muted-foreground" />
+            <ArrowDownNarrowWide className="size-4 text-muted-foreground" />
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

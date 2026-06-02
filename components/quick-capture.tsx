@@ -176,6 +176,12 @@ export function QuickCapture({
         value={body}
         onChange={(e) => setBody(e.target.value)}
         onFocus={() => setExpanded(true)}
+        onKeyDown={(e) => {
+          if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+            e.preventDefault()
+            handleSave()
+          }
+        }}
         placeholder={BODY_PROMPTS[type]}
         rows={showExpanded ? 3 : 1}
         className={cn(
