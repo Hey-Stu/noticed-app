@@ -112,12 +112,6 @@ export function deleteObservation(id: string): void {
   setState({ observations: next })
 }
 
-export function toggleFavorite(id: string): void {
-  const target = state.observations.find((o) => o.id === id)
-  if (!target) return
-  updateObservation(id, { favorite: !target.favorite })
-}
-
 export function updateSettings(patch: Partial<NoticedSettings>): void {
   const next = { ...state.settings, ...patch }
   persistSettings(next)

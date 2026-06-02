@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { format } from 'date-fns'
 import { toast } from 'sonner'
-import { Heart, Pencil, Trash2, ExternalLink, Check } from 'lucide-react'
+import { Pencil, Trash2, ExternalLink, Check } from 'lucide-react'
 import {
   Sheet,
   SheetContent,
@@ -39,7 +39,6 @@ export function ObservationDetail({
   tagSuggestions,
   onUpdate,
   onDelete,
-  onToggleFavorite,
 }: {
   observation: Observation | null
   open: boolean
@@ -47,7 +46,6 @@ export function ObservationDetail({
   tagSuggestions: string[]
   onUpdate: (id: string, patch: Partial<Observation>) => void
   onDelete: (id: string) => void
-  onToggleFavorite: (id: string) => void
 }) {
   const [editing, setEditing] = useState(false)
   const [body, setBody] = useState('')
@@ -219,17 +217,7 @@ export function ObservationDetail({
 
         <SheetFooter className="flex-row items-center justify-between border-t border-border/60 p-4">
           <div className="flex items-center gap-1">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => onToggleFavorite(observation.id)}
-              aria-label={observation.favorite ? 'Unfavorite' : 'Favorite'}
-              className={cn(observation.favorite && 'text-[var(--type-quote)]')}
-            >
-              <Heart
-                className={cn('size-4', observation.favorite && 'fill-current')}
-              />
-            </Button>
+
 
             <AlertDialog>
               <AlertDialogTrigger asChild>

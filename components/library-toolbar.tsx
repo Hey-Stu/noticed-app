@@ -68,7 +68,6 @@ export function LibraryToolbar({
           <SelectContent>
             <SelectItem value="newest">Newest first</SelectItem>
             <SelectItem value="oldest">Oldest first</SelectItem>
-            <SelectItem value="favorites">Favorites first</SelectItem>
           </SelectContent>
         </Select>
       </div>

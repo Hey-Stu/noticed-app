@@ -24,7 +24,6 @@ export interface Observation {
   tags: string[]
   createdAt: number
   updatedAt: number
-  favorite?: boolean
 }
 
 export interface NoticedSettings {
@@ -35,4 +34,4 @@ export interface NoticedSettings {
   samplesCleared: boolean
 }
 
-export type SortOption = 'newest' | 'oldest' | 'favorites'
+export type SortOption = 'newest' | 'oldest'

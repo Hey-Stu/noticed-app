@@ -36,7 +36,6 @@ export default function LibraryPage() {
     addObservation,
     updateObservation,
     deleteObservation,
-    toggleFavorite,
     updateSettings,
   } = useObservations()
 
@@ -152,7 +151,6 @@ export default function LibraryPage() {
             <ObservationGrid
               observations={filtered}
               onOpen={openDetail}
-              onToggleFavorite={toggleFavorite}
             />
           )}
         </>
@@ -165,7 +163,6 @@ export default function LibraryPage() {
         tagSuggestions={tags}
         onUpdate={updateObservation}
         onDelete={deleteObservation}
-        onToggleFavorite={toggleFavorite}
       />
     </div>
   )

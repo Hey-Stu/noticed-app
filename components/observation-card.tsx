@@ -1,7 +1,7 @@
 'use client'
 
 import { formatDistanceToNow } from 'date-fns'
-import { Heart, Quote as QuoteIcon, ExternalLink } from 'lucide-react'
+import { Quote as QuoteIcon, ExternalLink } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { Observation } from '@/lib/types'
 import { getTypeConfig } from '@/lib/observation-types'
@@ -19,11 +19,9 @@ function hostOf(url?: string): string | null {
 export function ObservationCard({
   observation,
   onOpen,
-  onToggleFavorite,
 }: {
   observation: Observation
   onOpen: (o: Observation) => void
-  onToggleFavorite: (id: string) => void
 }) {
   const config = getTypeConfig(observation.type)
   const time = formatDistanceToNow(observation.createdAt, { addSuffix: true })
@@ -129,26 +127,7 @@ export function ObservationCard({
         </div>
       </button>
 
-      <button
-        type="button"
-        onClick={(e) => {
-          e.stopPropagation()
-          onToggleFavorite(observation.id)
-        }}
-        className={cn(
-          'absolute right-3 top-3 flex size-8 items-center justify-center rounded-full bg-background/80 text-muted-foreground opacity-0 backdrop-blur transition-all hover:text-[var(--type-quote)] focus-visible:opacity-100 group-hover:opacity-100',
-          observation.favorite &&
-            'text-[var(--type-quote)] opacity-100',
-          (observation.type === 'color' || observation.type === 'image') &&
-            'opacity-100',
-        )}
-        aria-label={observation.favorite ? 'Remove from favorites' : 'Add to favorites'}
-        aria-pressed={observation.favorite}
-      >
-        <Heart
-          className={cn('size-4', observation.favorite && 'fill-current')}
-        />
-      </button>
+
     </article>
   )
 }
