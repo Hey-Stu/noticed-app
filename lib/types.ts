@@ -24,6 +24,8 @@ export interface Observation {
   tags: string[]
   createdAt: number
   updatedAt: number
+  /** True for curated example notes seeded by the app (not user-created) */
+  sample?: boolean
 }
 
 export interface NoticedSettings {

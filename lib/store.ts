@@ -144,6 +144,21 @@ export function reloadSamples(): void {
   setState({ observations: next, settings })
 }
 
+/** Remove only the curated sample notes; keep everything the user created. */
+export function clearSamples(): number {
+  const remaining = state.observations.filter((o) => !o.sample)
+  const removed = state.observations.length - remaining.length
+  const settings = {
+    ...state.settings,
+    samplesSeeded: true,
+    samplesCleared: true,
+  }
+  persistObservations(remaining)
+  persistSettings(settings)
+  setState({ observations: remaining, settings })
+  return removed
+}
+
 /** Wipe everything and mark samples as intentionally cleared. */
 export function clearAll(): void {
   const settings = {

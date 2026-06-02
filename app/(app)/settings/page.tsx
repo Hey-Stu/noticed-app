@@ -73,10 +73,11 @@ export default function SettingsPage() {
     observations,
     hydrated,
     reloadSamples,
-    clearAll,
+    clearSamples,
     exportData,
     importData,
   } = useObservations()
+  const sampleCount = observations.filter((o) => o.sample).length
   const [mounted, setMounted] = useState(false)
   const [size, setSize] = useState(0)
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -238,10 +239,10 @@ export default function SettingsPage() {
 
         <Separator />
 
-        {/* samples + start fresh */}
+        {/* samples */}
         <SettingsRow
           title="Sample observations"
-          description="Reload the curated example notes to explore the app (your own notes are kept), or clear everything and start from a blank slate."
+          description="Reload the curated example notes to explore the app, or remove just the samples when you're ready to make the space your own. Either way, notes you've saved yourself are always kept."
         >
           <div className="flex flex-wrap gap-2">
             <Button
@@ -263,32 +264,36 @@ export default function SettingsPage() {
                 <Button
                   variant="outline"
                   className="border-destructive/40 text-destructive hover:bg-destructive/10 hover:text-destructive"
+                  disabled={!hydrated || sampleCount === 0}
                 >
                   <Trash2 className="size-4" />
-                  Clear all & start fresh
+                  Clear samples
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>Clear your whole library?</AlertDialogTitle>
+                  <AlertDialogTitle>Remove the sample notes?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This removes every observation stored on this device,
-                    including the samples. It can&apos;t be undone and nothing is
-                    backed up. You can reload the samples anytime from Settings.
+                    This removes only the {sampleCount} curated example{' '}
+                    {sampleCount === 1 ? 'note' : 'notes'}. Anything you&apos;ve
+                    saved yourself stays exactly where it is. You can reload the
+                    samples anytime from Settings.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Keep my notes</AlertDialogCancel>
+                  <AlertDialogCancel>Keep them</AlertDialogCancel>
                   <AlertDialogAction
                     onClick={() => {
-                      clearAll()
-                      toast('Library cleared', {
-                        description: 'A clean slate. Notice something new.',
+                      const removed = clearSamples()
+                      toast('Samples removed', {
+                        description: `${removed} example ${
+                          removed === 1 ? 'note' : 'notes'
+                        } cleared. Your own notes are untouched.`,
                       })
                     }}
                     className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                   >
-                    Clear everything
+                    Remove samples
                   </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>

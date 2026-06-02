@@ -135,6 +135,7 @@ export function buildSampleObservations(): Observation[] {
       id: createId(),
       createdAt: ts,
       updatedAt: Math.min(ts + HOUR, now),
+      sample: true,
     } satisfies Observation
   }).sort((a, b) => b.createdAt - a.createdAt)
 }
