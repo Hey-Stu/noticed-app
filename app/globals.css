@@ -93,6 +93,7 @@
   --type-idea: oklch(0.78 0.13 75);
 }
 
+/* Fonts: Geist only. font-serif is intentionally mapped to Geist sans. */
 @theme inline {
   --font-sans: var(--font-geist-sans), 'Geist Fallback', ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), 'Geist Mono Fallback', ui-monospace, monospace;
