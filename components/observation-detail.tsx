@@ -28,7 +28,6 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { cn } from '@/lib/utils'
 import type { Observation } from '@/lib/types'
-import { getTypeConfig } from '@/lib/observation-types'
 import { TypeBadge } from '@/components/type-badge'
 import { TagInput } from '@/components/tag-input'
 
@@ -66,7 +65,6 @@ export function ObservationDetail({
 
   if (!observation) return null
 
-  const config = getTypeConfig(observation.type)
   const imgSrc = observation.imageData || observation.url
 
   function save() {

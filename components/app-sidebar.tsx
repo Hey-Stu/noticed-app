@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
   BookOpen,
+  Eye,
   Sparkles,
   FileText,
   Settings as SettingsIcon,
@@ -32,15 +33,7 @@ const NAV = [
 function BrandMark() {
   return (
     <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-paper">
-      <svg
-        viewBox="0 0 24 24"
-        className="size-4"
-        fill="none"
-        aria-hidden="true"
-      >
-        <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
-        <circle cx="12" cy="12" r="3" fill="currentColor" />
-      </svg>
+      <Eye className="size-4" aria-hidden="true" strokeWidth={2} />
     </span>
   )
 }
@@ -54,7 +47,7 @@ export function AppSidebar() {
         <div className="flex items-center gap-2.5 px-1">
           <BrandMark />
           <div className="flex flex-col leading-none">
-            <span className="font-serif text-lg font-semibold tracking-tight">
+            <span className="font-serif text-2xl font-semibold tracking-tight">
               Noticed
             </span>
             <span className="text-xs text-muted-foreground">

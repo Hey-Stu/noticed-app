@@ -283,7 +283,7 @@ export function QuickCapture({
           />
           <div className="flex items-center justify-between">
             <p className="hidden text-xs text-muted-foreground sm:block">
-              Small things count. That's the whole point.
+              Small things count. That&apos;s the whole point.
             </p>
             <div className="flex items-center gap-2">
               {(body || title || url || imageData || tags.length) ? (
