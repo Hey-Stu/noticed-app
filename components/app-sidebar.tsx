@@ -32,8 +32,31 @@ const NAV = [
 
 function BrandMark() {
   return (
-    <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-paper">
-      <Eye className="size-4" aria-hidden="true" strokeWidth={2} />
+    <span className="grid size-6 place-items-center text-foreground">
+      <Eye
+        className="brand-eye-open col-start-1 row-start-1 size-6 opacity-100"
+        aria-hidden="true"
+        strokeWidth={2}
+      />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="brand-eye-closed col-start-1 row-start-1 size-6 opacity-0"
+        aria-hidden="true"
+      >
+        <path d="m15 18-.722-3.25" />
+        <path d="M2 8a10.645 10.645 0 0 0 20 0" />
+        <path d="m20 15-1.726-2.05" />
+        <path d="m4 15 1.726-2.05" />
+        <path d="m9 18 .722-3.25" />
+      </svg>
     </span>
   )
 }
@@ -44,17 +67,18 @@ export function AppSidebar() {
   return (
     <Sidebar className="border-r border-sidebar-border">
       <SidebarHeader className="px-3 pt-4 pb-2">
-        <div className="flex items-center gap-2.5 px-1">
+        <Link
+          href="/"
+          aria-label="Go to Library"
+          className="brand-logo flex items-center gap-2.5 rounded-md px-1 outline-none transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:ring-sidebar-ring"
+        >
           <BrandMark />
           <div className="flex flex-col leading-none">
             <span className="font-serif text-2xl font-semibold tracking-tight">
               Noticed
             </span>
-            <span className="text-xs text-muted-foreground">
-              a field journal
-            </span>
           </div>
-        </div>
+        </Link>
       </SidebarHeader>
 
       <SidebarContent className="px-2">

@@ -170,4 +170,41 @@
   .font-serif {
     font-family: var(--font-serif);
   }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .brand-logo:hover .brand-eye-open {
+      animation: noticed-eye-open-blink 800ms ease-in-out both;
+    }
+    .brand-logo:hover .brand-eye-closed {
+      animation: noticed-eye-closed-blink 800ms ease-in-out both;
+    }
+  }
+}
+
+@keyframes noticed-eye-open-blink {
+  0%,
+  34%,
+  66%,
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  43%,
+  57% {
+    opacity: 0;
+    transform: scaleY(0.2);
+  }
+}
+
+@keyframes noticed-eye-closed-blink {
+  0%,
+  34%,
+  66%,
+  100% {
+    opacity: 0;
+  }
+  43%,
+  57% {
+    opacity: 1;
+  }
 }
