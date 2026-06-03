@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import type { ClipboardEvent, DragEvent } from 'react'
 import { toast } from 'sonner'
 import { ImagePlus, Upload, X, CornerDownLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -37,6 +38,7 @@ export function QuickCapture({
   const [color, setColor] = useState('#c98a5e')
   const [source, setSource] = useState('')
   const [tags, setTags] = useState<string[]>([])
+  const [isDraggingImage, setIsDraggingImage] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   function reset() {
@@ -47,6 +49,7 @@ export function QuickCapture({
     setColor('#c98a5e')
     setSource('')
     setTags([])
+    setIsDraggingImage(false)
     setExpanded(false)
   }
 
@@ -66,6 +69,44 @@ export function QuickCapture({
     reader.onload = () => setImageData(reader.result as string)
     reader.onerror = () => toast.error('Could not read that file.')
     reader.readAsDataURL(file)
+  }
+
+  function getImageFile(files: FileList | null): File | undefined {
+    if (!files) return undefined
+    return Array.from(files).find((file) => file.type.startsWith('image/'))
+  }
+
+  function handlePaste(e: ClipboardEvent<HTMLDivElement>) {
+    if (type !== 'image') return
+    const file = getImageFile(e.clipboardData.files)
+    if (!file) return
+    e.preventDefault()
+    handleFile(file)
+  }
+
+  function handleDragOver(e: DragEvent<HTMLDivElement>) {
+    if (type !== 'image') return
+    const hasImage = Array.from(e.dataTransfer.items).some((item) =>
+      item.type.startsWith('image/'),
+    )
+    if (!hasImage) return
+    e.preventDefault()
+    setIsDraggingImage(true)
+  }
+
+  function handleDragLeave(e: DragEvent<HTMLDivElement>) {
+    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+      setIsDraggingImage(false)
+    }
+  }
+
+  function handleDrop(e: DragEvent<HTMLDivElement>) {
+    if (type !== 'image') return
+    const file = getImageFile(e.dataTransfer.files)
+    if (!file) return
+    e.preventDefault()
+    setIsDraggingImage(false)
+    handleFile(file)
   }
 
   function canSave(): boolean {
@@ -103,7 +144,16 @@ export function QuickCapture({
   const showExpanded = expanded || type !== 'text'
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-4 shadow-paper md:p-5">
+    <div
+      className={cn(
+        'rounded-2xl border border-border bg-card p-4 shadow-paper transition-colors md:p-5',
+        isDraggingImage && 'border-foreground/40 bg-accent/40',
+      )}
+      onPaste={handlePaste}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+    >
       {/* type selector */}
       <div className="mb-3 flex flex-wrap gap-1.5">
         {TYPE_ORDER.map((t) => {
@@ -233,30 +283,41 @@ export function QuickCapture({
               </Button>
             </div>
           ) : (
-            <div className="flex flex-col gap-2 sm:flex-row">
-              <Input
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-                placeholder="Paste an image URL…"
-                inputMode="url"
-                className="text-sm"
-              />
-              <Button
-                type="button"
-                variant="outline"
-                className="shrink-0"
-                onClick={() => fileInputRef.current?.click()}
-              >
-                <Upload className="size-4" />
-                Upload
-              </Button>
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                className="hidden"
-                onChange={(e) => handleFile(e.target.files?.[0])}
-              />
+            <div
+              className={cn(
+                'rounded-xl border border-dashed border-border bg-muted/20 p-3 transition-colors',
+                isDraggingImage && 'border-foreground/50 bg-accent',
+              )}
+            >
+              <div className="flex flex-col gap-2 sm:flex-row">
+                <Input
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  placeholder="Paste an image URL…"
+                  inputMode="url"
+                  className="bg-background text-sm"
+                />
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="shrink-0"
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <Upload className="size-4" />
+                  Upload
+                </Button>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(e) => handleFile(e.target.files?.[0])}
+                />
+              </div>
+              <p className="mt-2 px-1 text-xs text-muted-foreground">
+                Drop an image here, paste from your clipboard, upload a file, or
+                use an image URL.
+              </p>
             </div>
           )}
         </div>

@@ -24,10 +24,11 @@ export function OnboardingBanner({ onDismiss }: { onDismiss: () => void }) {
         <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
           Capture small fragments as you move through your day — a color, a
           quote, a screenshot, a half-formed idea. Don&apos;t organize, don&apos;t
-          judge. Over time, <span className="text-foreground">Patterns</span> and
-          your <span className="text-foreground">Weekly Report</span> will show
-          you what you keep noticing. We&apos;ve left a few examples below to get
-          you started.
+          judge. Over time, <span className="text-foreground">Patterns</span>{' '}
+          and your <span className="text-foreground">Weekly Report</span> will
+          show you what you keep noticing. We&apos;ve left a few examples below
+          to get you started. Remove examples one by one, or clear them all at
+          once in <span className="text-foreground">Settings</span>.
         </p>
       </div>
       <div className="mt-4">

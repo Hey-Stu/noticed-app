@@ -31,7 +31,6 @@ function LibrarySkeleton() {
 export default function LibraryPage() {
   const {
     observations,
-    settings,
     hydrated,
     addObservation,
     updateObservation,
@@ -45,6 +44,7 @@ export default function LibraryPage() {
   const [sort, setSort] = useState<SortOption>('newest')
   const [selected, setSelected] = useState<Observation | null>(null)
   const [detailOpen, setDetailOpen] = useState(false)
+  const [showOnboarding, setShowOnboarding] = useState(true)
 
   const tags = useMemo(() => allTags(observations), [observations])
 
@@ -97,9 +97,12 @@ export default function LibraryPage() {
         description="Everything you've noticed, in one calm place. Add a fragment above whenever something catches you."
       />
 
-      {hydrated && !settings.onboardingDismissed ? (
+      {hydrated && showOnboarding ? (
         <OnboardingBanner
-          onDismiss={() => updateSettings({ onboardingDismissed: true })}
+          onDismiss={() => {
+            setShowOnboarding(false)
+            updateSettings({ onboardingDismissed: true })
+          }}
         />
       ) : null}
 
