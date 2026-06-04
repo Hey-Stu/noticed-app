@@ -12,10 +12,12 @@ export const metadata: Metadata = {
     'A calm, local-first field-notes app for collecting small observations, references, quotes, colors, and ideas — then discovering the patterns in what you keep noticing.',
   icons: {
     icon: [
+      { url: '/favicon.png', type: 'image/png', sizes: '256x256' },
       { url: '/icon.svg', type: 'image/svg+xml' },
       { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
       { url: '/icon-dark-32x32.png', media: '(prefers-color-scheme: dark)' },
     ],
+    shortcut: '/favicon.png',
     apple: '/apple-icon.png',
   },
 }
