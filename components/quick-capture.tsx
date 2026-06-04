@@ -188,7 +188,7 @@ export function QuickCapture({
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Give the idea a name (optional)"
-          className="mb-2 border-0 border-b border-border bg-transparent px-1 font-serif text-lg shadow-none focus-visible:ring-0"
+          className="mb-2 bg-background font-serif text-lg shadow-none"
         />
       ) : null}
 
@@ -329,7 +329,7 @@ export function QuickCapture({
           value={source}
           onChange={(e) => setSource(e.target.value)}
           placeholder="Who said or wrote it? (optional)"
-          className="mt-1 border-0 border-l-2 border-[var(--type-quote)]/40 bg-transparent px-3 text-sm italic shadow-none focus-visible:ring-0"
+          className="mt-1 border-0 bg-transparent px-3 text-sm italic shadow-none focus-visible:ring-0"
         />
       ) : null}
 
