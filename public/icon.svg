@@ -1,26 +1,25 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    @media (prefers-color-scheme: light) {
-      .background { fill: black; }
-      .foreground { fill: white; }
-    }
-    @media (prefers-color-scheme: dark) {
-      .background { fill: white; }
-      .foreground { fill: black; }
-    }
-  </style>
-  <g clip-path="url(#clip0_7960_43945)">
-    <rect class="background" width="180" height="180" rx="37" />
-    <g style="transform: scale(95%); transform-origin: center">
-      <path class="foreground"
-        d="M101.141 53H136.632C151.023 53 162.689 64.6662 162.689 79.0573V112.904H148.112V79.0573C148.112 78.7105 148.098 78.3662 148.072 78.0251L112.581 112.898C112.701 112.902 112.821 112.904 112.941 112.904H148.112V126.672H112.941C98.5504 126.672 86.5638 114.891 86.5638 100.5V66.7434H101.141V100.5C101.141 101.15 101.191 101.792 101.289 102.422L137.56 66.7816C137.255 66.7563 136.945 66.7434 136.632 66.7434H101.141V53Z" />
-      <path class="foreground"
-        d="M65.2926 124.136L14 66.7372H34.6355L64.7495 100.436V66.7372H80.1365V118.47C80.1365 126.278 70.4953 129.958 65.2926 124.136Z" />
-    </g>
+<svg width="644" height="644" viewBox="0 0 644 644" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_256_104)">
+    <rect width="644" height="644" rx="322" fill="#010101" />
+    <path
+      d="M178.796 319.919C176.623 325.776 176.623 332.217 178.796 338.073C199.968 389.409 235.906 433.303 282.054 464.189C328.202 495.075 382.482 511.564 438.013 511.564C493.543 511.564 547.823 495.075 593.971 464.189C640.119 433.303 676.057 389.409 697.229 338.073C699.402 332.217 699.402 325.776 697.229 319.919C676.057 268.584 640.119 224.69 593.971 193.804C547.823 162.918 493.543 146.429 438.013 146.429C382.482 146.429 328.202 162.918 282.054 193.804C235.906 224.69 199.968 268.584 178.796 319.919Z"
+      stroke="white"
+      stroke-width="20"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M438 407.25C481.216 407.25 516.25 372.216 516.25 329C516.25 285.784 481.216 250.75 438 250.75C394.784 250.75 359.75 285.784 359.75 329C359.75 372.216 394.784 407.25 438 407.25Z"
+      fill="white"
+      stroke="white"
+      stroke-width="24"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
   </g>
   <defs>
-    <clipPath id="clip0_7960_43945">
-      <rect width="180" height="180" fill="white" />
+    <clipPath id="clip0_256_104">
+      <rect width="644" height="644" rx="322" fill="white" />
     </clipPath>
   </defs>
 </svg>
