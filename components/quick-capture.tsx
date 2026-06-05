@@ -286,25 +286,32 @@ export function QuickCapture({
             <div
               className={cn(
                 'rounded-xl border border-dashed border-border bg-muted/20 p-3 transition-colors',
-                isDraggingImage && 'border-foreground/50 bg-accent',
+                isDraggingImage && 'border-foreground/50 bg-accent/80',
               )}
             >
-              <div className="flex flex-col gap-2 sm:flex-row">
-                <Input
-                  value={url}
-                  onChange={(e) => setUrl(e.target.value)}
-                  placeholder="Paste an image URL…"
-                  inputMode="url"
-                  className="bg-background text-sm"
-                />
+              <div className="flex flex-col items-start gap-3 rounded-lg bg-background/80 p-4">
+                <div className="flex items-start gap-3">
+                  <div className="rounded-full bg-[var(--type-image)]/12 p-2 text-[var(--type-image)]">
+                    <ImagePlus className="size-4" />
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-sm font-medium text-foreground">
+                      Drop, paste, or upload an image
+                    </p>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      Drag an image here, paste from your clipboard, or choose a
+                      file from your device.
+                    </p>
+                  </div>
+                </div>
                 <Button
                   type="button"
                   variant="outline"
-                  className="shrink-0"
+                  className="h-10 shrink-0"
                   onClick={() => fileInputRef.current?.click()}
                 >
                   <Upload className="size-4" />
-                  Upload
+                  Choose image
                 </Button>
                 <input
                   ref={fileInputRef}
@@ -314,10 +321,19 @@ export function QuickCapture({
                   onChange={(e) => handleFile(e.target.files?.[0])}
                 />
               </div>
-              <p className="mt-2 px-1 text-xs text-muted-foreground">
-                Drop an image here, paste from your clipboard, upload a file, or
-                use an image URL.
-              </p>
+
+              <div className="mt-3 space-y-2">
+                <p className="px-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                  Or use an image URL
+                </p>
+                <Input
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  placeholder="Paste an image URL…"
+                  inputMode="url"
+                  className="bg-background text-sm"
+                />
+              </div>
             </div>
           )}
         </div>
