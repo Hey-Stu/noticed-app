@@ -46,13 +46,13 @@ function persistObservations(observations: Observation[]) {
   // Fire-and-forget: in-memory state is the synchronous source of truth,
   // while IndexedDB writes settle in the background.
   void writeStorage(STORAGE_KEYS.observations, observations).catch((err) => {
-    console.log('[v0] persist observations failed:', (err as Error).message)
+    console.log('[noticed] persist observations failed:', (err as Error).message)
   })
 }
 
 function persistSettings(settings: NoticedSettings) {
   void writeStorage(STORAGE_KEYS.settings, settings).catch((err) => {
-    console.log('[v0] persist settings failed:', (err as Error).message)
+    console.log('[noticed] persist settings failed:', (err as Error).message)
   })
 }
 
