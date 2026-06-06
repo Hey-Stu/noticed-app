@@ -26,15 +26,23 @@ export function ObservationCard({
   const config = getTypeConfig(observation.type)
   const time = formatDistanceToNow(observation.createdAt, { addSuffix: true })
   const imgSrc = observation.imageData || observation.url
+  const isImageCard = observation.type === 'image' && imgSrc
+  const summary =
+    observation.body || observation.title || observation.source || observation.type
 
   return (
     <article
-      className="group relative mb-4 flex break-inside-avoid flex-col overflow-hidden rounded-2xl border border-border bg-card text-left shadow-paper transition-all hover:-translate-y-0.5 hover:shadow-paper-lg"
+      className={cn(
+        'group relative mb-5 flex break-inside-avoid flex-col overflow-hidden rounded-[1.75rem] text-left transition-all duration-300 hover:-translate-y-1',
+        isImageCard
+          ? 'bg-card shadow-paper hover:shadow-paper-lg'
+          : 'bg-card/82 ring-1 ring-border/70 shadow-paper hover:shadow-paper-lg',
+      )}
     >
       <button
         type="button"
         onClick={() => onOpen(observation)}
-        className="flex flex-1 flex-col text-left outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className="flex flex-1 flex-col text-left outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
         aria-label={`Open observation: ${observation.body || observation.title || observation.type}`}
       >
         {/* color block */}
@@ -55,28 +63,54 @@ export function ObservationCard({
           <img
             src={imgSrc || '/placeholder.svg'}
             alt={observation.title || observation.body || 'A saved image'}
-            className="max-h-72 w-full object-cover"
+            className="max-h-[34rem] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
             crossOrigin="anonymous"
           />
         ) : null}
 
-        <div className="flex flex-1 flex-col gap-2 p-4">
-          <div className="flex items-center justify-between gap-2">
+        {isImageCard ? (
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 text-white">
+            <div className="flex items-start justify-between gap-3">
+              <div className="space-y-2">
+                <TypeBadge
+                  type={observation.type}
+                  className="bg-white/14 text-white backdrop-blur"
+                />
+                {observation.title ? (
+                  <h3 className="max-w-[18rem] font-serif text-2xl font-semibold leading-none text-balance">
+                    {observation.title}
+                  </h3>
+                ) : null}
+                <p className="max-w-[18rem] text-sm leading-relaxed text-white/82">
+                  {summary}
+                </p>
+              </div>
+              <time className="shrink-0 pt-1 text-[11px] uppercase tracking-[0.16em] text-white/72">
+                {time}
+              </time>
+            </div>
+          </div>
+        ) : null}
+
+        <div className={cn('flex flex-1 flex-col gap-3 p-5', isImageCard && 'sr-only')}>
+          <div className="flex items-center justify-between gap-3">
             <TypeBadge type={observation.type} />
-            <time className="text-xs text-muted-foreground">{time}</time>
+            <time className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+              {time}
+            </time>
           </div>
 
           {/* quote */}
           {observation.type === 'quote' ? (
-            <blockquote className="relative pl-1">
+            <blockquote className="relative space-y-2 pl-1">
               <QuoteIcon
                 className={cn('mb-1 size-4 opacity-50', config.colorClass)}
               />
-              <p className="font-serif text-lg leading-snug text-pretty">
+              <p className="font-serif text-[1.7rem] leading-[1.05] text-pretty">
                 {observation.body}
               </p>
               {observation.source ? (
-                <footer className="mt-2 text-sm text-muted-foreground">
+                <footer className="text-sm uppercase tracking-[0.14em] text-muted-foreground">
                   — {observation.source}
                 </footer>
               ) : null}
@@ -87,14 +121,14 @@ export function ObservationCard({
           {observation.type !== 'quote' ? (
             <>
               {observation.title ? (
-                <h3 className="font-serif text-base font-semibold leading-snug text-pretty">
+                <h3 className="font-serif text-2xl font-semibold leading-tight text-pretty">
                   {observation.title}
                 </h3>
               ) : null}
               {observation.body ? (
                 <p
                   className={cn(
-                    'text-sm leading-relaxed text-pretty',
+                    'text-sm leading-relaxed text-pretty md:text-[15px]',
                     observation.title
                       ? 'text-muted-foreground'
                       : 'text-foreground',
@@ -104,7 +138,7 @@ export function ObservationCard({
                 </p>
               ) : null}
               {observation.type === 'link' && observation.url ? (
-                <span className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-[var(--type-link)]">
+                <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--type-link)]">
                   <ExternalLink className="size-3" />
                   {hostOf(observation.url)}
                 </span>
@@ -113,11 +147,11 @@ export function ObservationCard({
           ) : null}
 
           {observation.tags.length ? (
-            <div className="mt-auto flex flex-wrap gap-1 pt-1">
-              {observation.tags.slice(0, 4).map((tag) => (
+            <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
+              {observation.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-secondary/70 px-2 py-0.5 text-xs text-muted-foreground"
+                  className="rounded-full bg-secondary/80 px-2.5 py-1 text-[11px] uppercase tracking-[0.12em] text-muted-foreground"
                 >
                   #{tag}
                 </span>

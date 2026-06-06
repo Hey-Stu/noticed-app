@@ -8,6 +8,7 @@ import {
   Moon,
   Monitor,
   Database,
+  Sparkles,
   RotateCcw,
   Trash2,
   Download,
@@ -72,6 +73,8 @@ export default function SettingsPage() {
   const {
     observations,
     hydrated,
+    settings,
+    updateSettings,
     reloadSamples,
     clearSamples,
     exportData,
@@ -235,6 +238,29 @@ export default function SettingsPage() {
               }}
             />
           </div>
+        </SettingsRow>
+
+        <Separator />
+
+        {/* onboarding */}
+        <SettingsRow
+          title="Onboarding"
+          description="Reopen the welcome modal if you dismissed it too quickly or want to revisit the app's introduction."
+        >
+          <Button
+            variant="outline"
+            onClick={() => {
+              updateSettings({ onboardingDismissed: false })
+              toast.success('Onboarding reset', {
+                description:
+                  'Return to the Library to see the welcome modal again.',
+              })
+            }}
+            disabled={!hydrated || !settings.onboardingDismissed}
+          >
+            <Sparkles className="size-4" />
+            Show onboarding again
+          </Button>
         </SettingsRow>
 
         <Separator />

@@ -146,7 +146,7 @@ export function QuickCapture({
   return (
     <div
       className={cn(
-        'rounded-2xl border border-border bg-card p-4 shadow-paper transition-colors md:p-5',
+        'bg-grain rounded-[2rem] border border-border/80 p-4 shadow-paper transition-colors md:p-6',
         isDraggingImage && 'border-foreground/40 bg-accent/40',
       )}
       onPaste={handlePaste}
@@ -155,7 +155,10 @@ export function QuickCapture({
       onDrop={handleDrop}
     >
       {/* type selector */}
-      <div className="mb-3 flex flex-wrap gap-1.5">
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <span className="mr-2 text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
+          Add something worth keeping
+        </span>
         {TYPE_ORDER.map((t) => {
           const config = getTypeConfig(t)
           const Icon = config.icon
@@ -169,10 +172,10 @@ export function QuickCapture({
                 setExpanded(true)
               }}
               className={cn(
-                'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors',
+                'inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors',
                 active
                   ? cn('border-transparent', config.tintClass, config.colorClass)
-                  : 'border-border text-muted-foreground hover:border-foreground/20 hover:text-foreground',
+                  : 'border-border/70 bg-card/60 text-muted-foreground hover:border-foreground/20 hover:bg-card hover:text-foreground',
               )}
             >
               <Icon className="size-3.5" />
@@ -188,7 +191,7 @@ export function QuickCapture({
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Give the idea a name (optional)"
-          className="mb-2 bg-background font-serif text-lg shadow-none"
+          className="mb-2 rounded-2xl border-border/70 bg-card/70 font-serif text-xl shadow-none"
         />
       ) : null}
 
@@ -211,7 +214,7 @@ export function QuickCapture({
             <Input
               value={color.toUpperCase()}
               onChange={(e) => setColor(e.target.value)}
-              className="w-32 font-mono text-sm uppercase"
+              className="w-32 rounded-full border-border/70 bg-card/70 font-mono text-sm uppercase"
               aria-label="Hex color"
             />
             <p className="mt-1 text-xs text-muted-foreground">
@@ -235,7 +238,7 @@ export function QuickCapture({
         placeholder={BODY_PROMPTS[type]}
         rows={showExpanded ? 3 : 1}
         className={cn(
-          'resize-none border-0 bg-transparent px-1 text-base shadow-none focus-visible:ring-0',
+          'resize-none border-0 bg-transparent px-1 text-base shadow-none focus-visible:ring-0 md:text-lg',
           type === 'quote' && 'font-serif text-lg italic',
           !showExpanded && 'min-h-0',
         )}
@@ -249,13 +252,13 @@ export function QuickCapture({
             onChange={(e) => setUrl(e.target.value)}
             placeholder="https://…"
             inputMode="url"
-            className="text-sm"
+            className="rounded-full border-border/70 bg-card/70 text-sm"
           />
           <Input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Title (optional)"
-            className="text-sm"
+            className="rounded-full border-border/70 bg-card/70 text-sm"
           />
         </div>
       ) : null}
@@ -351,7 +354,7 @@ export function QuickCapture({
 
       {/* expanded footer: tags + actions */}
       {showExpanded ? (
-        <div className="mt-3 space-y-3 border-t border-border/60 pt-3">
+        <div className="mt-4 space-y-3 border-t border-border/60 pt-4">
           <TagInput
             value={tags}
             onChange={setTags}
@@ -360,15 +363,20 @@ export function QuickCapture({
           />
           <div className="flex items-center justify-between">
             <p className="hidden text-xs text-muted-foreground sm:block">
-              Small things count. That&apos;s the whole point.
+              A reference library grows one small instinct at a time.
             </p>
             <div className="flex items-center gap-2">
               {(body || title || url || imageData || tags.length) ? (
-                <Button variant="ghost" size="sm" onClick={reset}>
+                <Button variant="ghost" size="sm" className="rounded-full" onClick={reset}>
                   Clear
                 </Button>
               ) : null}
-              <Button size="sm" onClick={handleSave} disabled={!canSave()}>
+              <Button
+                size="sm"
+                className="rounded-full px-4"
+                onClick={handleSave}
+                disabled={!canSave()}
+              >
                 Keep it
                 <CornerDownLeft className="size-3.5" />
               </Button>
@@ -376,9 +384,9 @@ export function QuickCapture({
           </div>
         </div>
       ) : (
-        <div className="mt-2 flex items-center gap-2 px-1 text-xs text-muted-foreground">
+        <div className="mt-3 flex items-center gap-2 px-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">
           <ImagePlus className="size-3.5" />
-          <span>Capture a fragment — a color, a quote, a passing thought.</span>
+          <span>Capture a fragment: a color, a quote, a passing thought.</span>
         </div>
       )}
     </div>

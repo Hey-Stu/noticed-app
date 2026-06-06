@@ -39,21 +39,21 @@ export function LibraryToolbar({
   hasFilters: boolean
 }) {
   return (
-    <div className="space-y-3">
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+    <div className="space-y-4">
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
         <div className="relative flex-1">
-          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+          <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={query}
             onChange={(e) => onQueryChange(e.target.value)}
-            placeholder="Search what you've noticed…"
-            className="h-10 pl-9"
+            placeholder="Search your references, quotes, colors, and ideas"
+            className="h-12 rounded-full border-border/80 bg-card/75 pl-11 shadow-paper"
           />
           {query ? (
             <button
               type="button"
               onClick={() => onQueryChange('')}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
               aria-label="Clear search"
             >
               <X className="size-4" />
@@ -61,7 +61,7 @@ export function LibraryToolbar({
           ) : null}
         </div>
         <Select value={sort} onValueChange={(v) => onSortChange(v as SortOption)}>
-          <SelectTrigger className="h-10 w-full sm:w-44">
+          <SelectTrigger className="h-12 w-full rounded-full border-border/80 bg-card/75 shadow-paper sm:w-48">
             <ArrowDownNarrowWide className="size-4 text-muted-foreground" />
             <SelectValue />
           </SelectTrigger>
@@ -72,7 +72,7 @@ export function LibraryToolbar({
         </Select>
       </div>
 
-      <div className="flex flex-wrap items-center gap-1.5">
+      <div className="flex flex-wrap items-center gap-2">
         {TYPE_ORDER.map((t) => {
           const config = getTypeConfig(t)
           const Icon = config.icon
@@ -83,10 +83,10 @@ export function LibraryToolbar({
               type="button"
               onClick={() => onToggleType(t)}
               className={cn(
-                'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors',
+                'inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors',
                 active
                   ? cn('border-transparent', config.tintClass, config.colorClass)
-                  : 'border-border text-muted-foreground hover:border-foreground/20 hover:text-foreground',
+                  : 'border-border/70 bg-card/55 text-muted-foreground hover:border-foreground/20 hover:bg-card hover:text-foreground',
               )}
             >
               <Icon className="size-3.5" />
@@ -108,7 +108,7 @@ export function LibraryToolbar({
       </div>
 
       {tags.length ? (
-        <div className="flex flex-wrap items-center gap-1.5">
+        <div className="flex flex-wrap items-center gap-2">
           {tags.slice(0, 16).map((tag) => {
             const active = activeTags.includes(tag)
             return (
@@ -117,10 +117,10 @@ export function LibraryToolbar({
                 type="button"
                 onClick={() => onToggleTag(tag)}
                 className={cn(
-                  'rounded-full px-2 py-0.5 text-xs transition-colors',
+                  'rounded-full px-3 py-1 text-xs transition-colors',
                   active
                     ? 'bg-primary text-primary-foreground'
-                    : 'bg-secondary/60 text-muted-foreground hover:bg-secondary hover:text-foreground',
+                    : 'bg-secondary/70 text-muted-foreground hover:bg-secondary hover:text-foreground',
                 )}
               >
                 #{tag}

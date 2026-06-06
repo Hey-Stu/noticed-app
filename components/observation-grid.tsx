@@ -11,7 +11,7 @@ export function ObservationGrid({
   onOpen: (o: Observation) => void
 }) {
   return (
-    <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
+    <div className="columns-1 gap-5 md:columns-2 xl:columns-3 2xl:columns-4">
       {observations.map((o) => (
         <ObservationCard
           key={o.id}
