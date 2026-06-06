@@ -4,10 +4,12 @@ This file collects reusable launch, submission, README, and promotional copy for
 
 Working assumptions used here:
 
-- Product name in the app UI and metadata is `Noticed`.
-- No OpenAI API usage is visible in the runtime code.
-- No backend, auth, or remote database is visible in the repository.
-- No public URLs, author name, or official launch assets are published in the repo, so placeholders are used where needed.
+- The product name shown in the app UI is `Noticed`.
+- The app is a local-first browser app with no visible auth, backend, or remote database.
+- No OpenAI API is used at runtime in the shipped product.
+- Public links, launch assets, and author metadata are not published in the repository, so placeholders are used where needed.
+
+---
 
 ## 1. Project Positioning
 
@@ -15,53 +17,70 @@ Working assumptions used here:
 
 - Project name: `Noticed`
 - Placeholder-safe name: `[PROJECT_NAME]`
-- Suggested category/type: `App`, `Creative tool`, `Personal knowledge tool`, `Template`
+- Suggested category/type: `App`, `Creative tool`, `Personal reference library`, `Template`
 
 ### One-Line Tagline
 
-`A quiet, local-first place for what you notice.`
+`A calm, local-first library for the things that catch your eye.`
 
 ### Short Elevator Pitch
 
-`Noticed` is a calm field-notes app for collecting small observations, references, quotes, colors, images, and ideas. Instead of pushing productivity or performance, it helps people capture fragments as they happen, then reflect on recurring themes through pattern summaries and a weekly report.
+`Noticed` is a local-first visual reference and field-notes app for saving images, links, quotes, colors, notes, and ideas in one quiet place. It helps you collect fragments quickly, browse them like a personal archive, and reflect on recurring themes through pattern summaries and weekly reports.
 
 ### Longer Product Description
 
-`Noticed` is a browser-based journaling and observation app built for small things that are easy to lose: an overheard line, a useful link, a color, a photo, a design thought, a quote, or a half-formed idea. The main capture flow supports six entry types and keeps the process intentionally lightweight.
+`Noticed` is a browser-based capture and reflection app designed for small things that are easy to lose: a compelling image, a useful link, a quote, a color, a design detail, an overheard line, or a half-formed idea. The product is intentionally light on process. You save what matters, tag it if you want, and let the collection build over time.
 
-Everything is stored locally on the device using browser storage, which makes the app feel personal, private, and easy to try without accounts or setup. The app also includes curated sample observations, JSON import/export, light and dark themes, searchable tags, and filters.
+The app now leans into a more editorial, image-led experience. The main library feels closer to browsing a personal moodboard or reference archive than managing a productivity dashboard. A first-time onboarding modal sets the tone, the capture composer stays fast and flexible, and the browsing surface prioritizes visual calm over app noise.
 
-What makes the product more interesting than a basic notes app is that it does something with what you save. The `Patterns` view surfaces repeated tags, type distribution, recurring colors, co-occurring themes, and cadence. The `Weekly Report` turns a week of saved observations into a gentle written reflection.
+Everything is stored locally in the browser. There are no accounts, no backend dependencies, and no required setup beyond running the app. JSON import and export make the library portable, while sample observations make the product easy to demo or evaluate quickly.
+
+What makes the project more interesting than a standard notes app is that it reflects your attention back to you. The `Patterns` view surfaces recurring tags, color clusters, type distribution, co-occurring themes, and cadence. The `Weekly Report` turns recent observations into a softer written recap of what kept returning.
 
 ### Target Audience
 
-- Designers collecting visual references, colors, textures, and ideas
-- Writers capturing lines, quotes, and fragments
-- Creative developers exploring local-first UX patterns
-- People who want a calmer alternative to a conventional notes feed
-- Builders looking for a reusable Next.js template for capture, tagging, and reflection
+- Designers building personal inspiration libraries
+- Writers collecting lines, fragments, and quotes
+- Creative developers interested in local-first products
+- People who want a calmer alternative to conventional bookmarking or notes apps
+- Builders looking for a reusable Next.js template for capture, tagging, and reflection workflows
 
 ### Primary Use Case
 
-`Capture small observations throughout the week, then review what themes, forms, and patterns keep returning.`
+`Capture visual and textual references throughout the week, then revisit the archive to see what patterns and themes keep returning.`
 
 ### Secondary Use Cases
 
 - Personal inspiration library
 - Moodboard-adjacent reference collection
-- Quote and link clipping
+- Quote and link clipping tool
+- Creative journaling app
 - Design research notebook
-- Lightweight creative journaling
-- Demo/template for local-first app design in Next.js
+- Local-first demo/template for thoughtful personal software
 
 ### What Makes the Project Interesting or Different
 
-- Local-first by default, with no required account or backend
-- Intentionally calm tone and interface instead of productivity pressure
-- Supports multiple observation formats: text, image, link, color, quote, idea
-- Turns captured fragments into pattern summaries and a weekly narrative reflection
-- Includes sample data, import/export, and device-only storage messaging
-- Strong template potential for builders who want a reusable capture-and-reflection foundation
+- Local-first by default, with browser-only persistence
+- Editorial, image-led browsing instead of a dashboard-heavy layout
+- Six observation types: text, image, link, color, quote, idea
+- Search, tags, filters, and sorting for light organization
+- Reflective views that turn saved fragments into patterns and weekly summaries
+- Import/export support for portability
+- First-run onboarding and sample content for better demos and template usability
+- Strong template potential for creative capture products or personal knowledge tools
+
+### Suggested Project Category / Type
+
+Best fit:
+
+`Creative tool`
+
+Strong alternatives:
+
+- `App`
+- `Template`
+- `Visual experience`
+- `Personal productivity`
 
 ### Placeholder Links
 
@@ -71,6 +90,8 @@ What makes the product more interesting than a basic notes app is that it does s
 - v0 template: `[V0_TEMPLATE_URL]`
 - OpenAI showcase listing: `[OPENAI_SHOWCASE_URL]`
 - Cover image: `[COVER_IMAGE_URL]`
+
+---
 
 ## 2. OpenAI Showcase Gallery Submission Content
 
@@ -82,42 +103,47 @@ What makes the product more interesting than a basic notes app is that it does s
 
 **Project tagline**
 
-`A calm, local-first field-notes app for collecting small observations, then discovering the patterns in what you keep noticing.`
+`A local-first reference library for saving what catches your eye, then discovering the patterns in what you keep returning to.`
 
 **Project description**
 
-`Noticed` is a browser-based field-notes app for saving small fragments you want to keep: quotes, links, images, colors, text notes, and early ideas. The capture flow is lightweight, the UI stays intentionally calm, and everything is stored locally on the device.
+`Noticed` is a browser-based capture and reflection app for saving visual and textual fragments: images, links, quotes, colors, notes, and early ideas. It is designed to feel more like browsing a personal archive than managing a traditional notes app, with an editorial interface and a lightweight capture flow.
 
-Beyond basic capture, the app reflects your own attention back to you. A `Patterns` view surfaces recurring tags, colors, entry types, and related threads, while a `Weekly Report` turns recent observations into a gentle written summary.
+Everything is stored locally in the browser, so there is no account setup or backend dependency. Users can save observations, search and filter them, revisit them in an image-led library, and export or import their archive as JSON.
 
-It is useful both as a real personal tool and as a clean example of a thoughtful local-first app built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui-style components.
+What makes the project more interesting than a simple local notes app is the reflective layer. A `Patterns` view surfaces recurring themes, colors, types, and related tags, while a `Weekly Report` turns recent saves into a short written reflection. The project also works well as a reusable Next.js template for local-first capture products.
 
 **Project type**
 
-`App`
+`Creative tool`
 
-Alternative fit:
+Alternative acceptable answers:
 
-- `Creative tool`
+- `App`
 - `Template`
 - `Visual experience`
 
 **Use cases showcased**
 
-`Creative tools, personal knowledge capture, visual reference collection, journaling, developer templates`
+`Creative tools, personal reference libraries, local-first apps, journaling, design inspiration, developer templates`
 
 **Capability showcased**
 
-`Codex-assisted development and UI implementation`  
-If no OpenAI tooling was used during development, replace with `N/A`.
+Recommended:
+
+`Codex-assisted development and UI implementation`
+
+If you prefer the most conservative answer:
+
+`N/A at runtime; built with AI-assisted development workflows`
 
 **OpenAI models and APIs used**
 
-`No OpenAI runtime API usage is visible in this repository. If applicable, note that the project was built or refined with Codex and/or ChatGPT during development rather than using OpenAI APIs in production.`
+`No OpenAI API is used at runtime in the shipped product. If applicable, this project can be described as built and refined with Codex and/or ChatGPT during development, design iteration, implementation, and copy editing.`
 
-Suggested fill-in:
+Suggested paste-ready version:
 
-`Built with development help from Codex and/or ChatGPT. No OpenAI API is used at runtime in the app itself.`
+`Built with Codex and/or ChatGPT as development tools for implementation and refinement. No OpenAI API is used at runtime in the app itself.`
 
 **Other models or APIs used**
 
@@ -127,15 +153,15 @@ Suggested fill-in:
 
 Recommended answer:
 
-`Needs confirmation`
+`Yes`
 
 Recommended explanation:
 
-`If true: Yes. Codex helped draft, refine, and iterate on the implementation and product copy. The shipped app itself does not depend on Codex at runtime.`
+`Codex was used during development to help implement UI changes, refine product behavior, debug issues, and improve launch-ready project copy. The final app does not depend on Codex at runtime.`
 
-Fallback if not true:
+If you need a safer placeholder:
 
-`No. Codex was not used in the build process.`
+`Needs confirmation`
 
 **Did you use another coding agent to build this?**
 
@@ -145,23 +171,23 @@ Recommended answer:
 
 Recommended explanation:
 
-`No other coding agent use is clearly documented in this repository. If tools such as v0, Cursor, Claude Code, or Lovable were used, add them here before submitting.`
+`No other coding agent usage is clearly documented in the repository. If tools such as v0, Cursor, Claude Code, Lovable, or similar were used, replace this with the confirmed tools before submitting.`
 
 **Tech stack**
 
-`Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, shadcn/ui-style component structure, Radix UI primitives, next-themes, Sonner, date-fns, lucide-react, IndexedDB-based local persistence, Vercel Analytics in production, designed for Vercel deployment.`
+`Next.js 16 App Router, React 19, TypeScript, Tailwind CSS 4, Radix UI primitives, shadcn/ui-style component architecture, next-themes, Sonner, date-fns, lucide-react, browser-local persistence with IndexedDB/local browser storage, and Vercel Analytics in production.`
 
 **Build process description**
 
 Maximum 500 characters:
 
-`Built as a local-first Next.js app with TypeScript, Tailwind CSS, and shadcn/ui-style components. The product centers on fast capture, device-only persistence, and reflective views like Patterns and Weekly Report. If applicable, Codex or ChatGPT can be credited for helping iterate on the implementation and polish, but the app itself has no OpenAI runtime dependency.`
+`Built as a local-first Next.js app with TypeScript, Tailwind CSS, and Radix-based UI components. The product focuses on fast multi-type capture, editorial browsing, and reflective views like Patterns and Weekly Report. Codex and/or ChatGPT can be credited for helping implement, debug, and refine the app, but there is no OpenAI runtime dependency in production.`
 
 **Setup steps**
 
 Maximum 500 characters:
 
-`Clone the repo, install dependencies with pnpm, then run pnpm dev and open http://localhost:3000. The app stores data locally in the browser, so no database or auth setup is required. If you want a clean demo state, use the built-in sample observations or import/export JSON from Settings.`
+`Clone the repo, install dependencies with pnpm, run pnpm dev, and open http://localhost:3000. No database, auth provider, or environment variables are required. The app stores data locally in the browser and includes sample observations plus JSON import/export for trying the full workflow quickly.`
 
 **Public GitHub repository**
 
@@ -181,22 +207,22 @@ Maximum 500 characters:
 
 Recommended note:
 
-`Use a clean screenshot of the Library view with the capture composer visible, or a side-by-side composite of Library + Patterns to show both capture and reflection.`
+`Use a clean screenshot of the Library view showing the editorial hero, capture composer, and masonry feed, or a composite that also includes Patterns and Weekly Report.`
 
 ### OpenAI Showcase Form Checklist
 
 | Field | Status | Notes |
 | --- | --- | --- |
 | Project title | Ready | `Noticed` |
-| Project tagline | Ready | Can use the version above |
+| Project tagline | Ready | Can paste as-is |
 | Project description | Ready | Can paste as-is |
-| Project type | Ready | Best fit: `App` |
+| Project type | Ready | Best fit: `Creative tool` |
 | Use cases showcased | Ready | Concise list prepared |
-| Capability showcased | Needs confirmation | Depends on whether Codex/ChatGPT were used |
-| OpenAI models and APIs used | Needs confirmation | No runtime API usage detected |
-| Other models or APIs used | Ready | `N/A` unless you add something |
-| Did you use Codex to build this? | Needs confirmation | Repo does not prove build history |
-| Did you use another coding agent? | Needs confirmation | Add only if true |
+| Capability showcased | Ready | AI-assisted development framing suggested |
+| OpenAI models and APIs used | Needs confirmation | Runtime usage is `No`; dev-tool usage can be confirmed |
+| Other models or APIs used | Ready | `N/A` |
+| Did you use Codex to build this? | Needs confirmation | Recommended answer prepared |
+| Did you use another coding agent? | Needs confirmation | Replace only if true |
 | Tech stack | Ready | Based on repo |
 | Build process description | Ready | Under limit |
 | Setup steps | Ready | Under limit |
@@ -205,69 +231,73 @@ Recommended note:
 | Author display name | Missing | Replace `[AUTHOR_NAME]` |
 | Cover image link | Missing | Replace `[COVER_IMAGE_URL]` |
 
+---
+
 ## 3. Vercel / v0 Template Submission Content
 
 ### Template / Project Title
 
 `Noticed`
 
-Alternative template-style title:
+Alternative template-facing title:
 
-`Noticed: Local-First Field Notes App`
+`Noticed: Local-First Reference Library`
 
 ### Short Description
 
-`A reusable local-first Next.js app for capturing observations, tagging them, and turning them into patterns and weekly reflections.`
+`A reusable Next.js app for collecting visual and textual references, then surfacing patterns across what you save.`
 
 ### Long Description
 
-`Noticed` is a polished Next.js starter for builders who want more than a simple notes CRUD demo. It includes fast multi-type capture, search and tag filters, local browser persistence, JSON import/export, curated sample content, a pattern-analysis view, and a weekly reflection report.
+`Noticed` is a polished local-first Next.js app for builders who want more than a basic notes CRUD template. It supports multiple observation types, lightweight capture, image-led browsing, search and filters, local persistence, JSON import/export, first-run onboarding, sample content, and reflective views like `Patterns` and `Weekly Report`.
 
-If published as a template, it gives users a strong foundation for creative journals, research notebooks, inspiration libraries, lightweight personal knowledge tools, or calm local-first apps. It is especially useful for builders who want a clean UI and meaningful product behavior without wiring up a backend first.
+As a template, it gives users a strong starting point for personal reference libraries, creative notebooks, moodboard-adjacent products, private local-first tools, or capture-and-reflection workflows. It is especially useful for teams or indie builders who want a clean, thoughtful foundation before adding accounts, sync, collaboration, or AI features later.
 
 ### Category Recommendation
 
-- `Productivity`
-- `Developer Tools`
-- `Template`
-- `Creative`
-
-Best overall fit:
+Best fit:
 
 `Template`
 
+Strong alternatives:
+
+- `Creative`
+- `Productivity`
+- `Developer Tools`
+
 ### Tags
 
-`nextjs, react, typescript, tailwind, shadcn, radix-ui, local-first, indexeddb, notes, journaling, creative-tool, template, vercel`
+`nextjs, react, typescript, tailwindcss, radix-ui, shadcn, local-first, indexeddb, creative-tool, notes, journaling, reference-library, template, vercel`
 
 ### Features List
 
 - Six observation types: text, image, link, color, quote, idea
-- Fast inline capture flow
-- Search, tag filters, and sort controls
-- Local-first persistence using browser storage
+- Editorial library view with responsive masonry layout
+- Fast inline capture composer
+- Search, tag filters, and sorting
+- Local-first browser storage
 - JSON import and export
-- Curated sample observations for first-run demos
-- Patterns view with tags, colors, cadence, and related themes
-- Weekly report generated from saved observations
-- Light and dark themes
-- Responsive, polished UI built with reusable components
+- Sample observations for first-run demos
+- Onboarding modal that can be reopened from Settings
+- Patterns view with recurring tags, colors, cadence, and related themes
+- Weekly report view generated from saved observations
+- Light and dark theme support
 
 ### What Users Can Build With It
 
-- Personal inspiration library
-- Research or reference notebook
-- Creative journaling tool
-- Moodboard-adjacent capture app
-- Private local-first note app
-- Reflection or review tool
-- A branded template for observation-driven products
+- Personal inspiration libraries
+- Visual bookmarking tools
+- Creative journaling products
+- Research notebooks
+- Design reference archives
+- Private local-first note apps
+- Reflection-driven capture products
 
 ### Suggested Cover Image Direction
 
-- Primary recommendation: Library screen with the quick capture module open and a few sample cards visible
-- Secondary recommendation: composite showing Library, Patterns, and Weekly Report
-- Visual emphasis: calm typography, observation cards, and the reflective product tone
+- Main recommendation: the Library view with hero, capture composer, and cards visible
+- Secondary option: a 3-panel composite of Library, Patterns, and Weekly Report
+- Emphasize: editorial typography, local-first calm, and the image-led archive feel
 
 ### URL Placeholders
 
@@ -282,7 +312,7 @@ Best overall fit:
 
 Optional note:
 
-`Vercel Analytics is included in production, but no user-supplied environment variables are required for local use.`
+`Vercel Analytics is included in production, but no setup from the user is required for local-first usage.`
 
 ### Setup Instructions
 
@@ -297,46 +327,58 @@ Then open:
 
 ### Deployment Instructions
 
-`Deploy to Vercel as a standard Next.js app. No database, auth provider, or server-side secrets are required for the current local-first version.`
+`Deploy to Vercel as a standard Next.js app. The current version has no backend, database, auth provider, or server-side environment requirements.`
 
 ### Notes for Reviewers
 
-- This project is best positioned as a reusable local-first app template, not just a static design.
-- The most distinctive product behavior is in `Patterns` and `Weekly Report`, not only the capture screen.
-- There is no backend dependency in the current repository.
-- If publishing as a template, keep the positioning honest: this is a polished starting point for capture-and-reflection products, not a full multi-user SaaS.
+- This project is best understood as a reusable product foundation, not a static landing page.
+- The most interesting behaviors are in the end-to-end workflow: capture, browse, reflect.
+- `Patterns` and `Weekly Report` are core product differentiators.
+- The app is honest local-first software, not a faux-SaaS demo.
+
+---
 
 ## 4. GitHub README Draft
 
 ```md
 # [PROJECT_NAME]
 
-A calm, local-first field-notes app for collecting small observations, references, quotes, colors, images, and ideas, then discovering the patterns in what you keep noticing.
+A calm, local-first reference library for saving what catches your eye, then discovering the patterns in what you keep returning to.
 
 ![Preview]([COVER_IMAGE_URL])
 
 Live demo: [LIVE_DEMO_URL]
 
+## What It Is
+
+`Noticed` is a browser-based app for collecting images, links, colors, quotes, notes, and early ideas in one quiet place. It is designed to feel more like browsing a personal archive than managing a dashboard.
+
+Everything is stored locally in the browser. There is no account setup, no backend dependency, and no required environment configuration for the current version.
+
 ## Features
 
-- Capture six kinds of observations: text, image, link, color, quote, and idea
-- Search, filter, and browse your saved notes in one library
-- Discover recurring themes in the `Patterns` view
-- Review your recent activity in a generated `Weekly Report`
-- Keep everything on-device with local browser storage
-- Import and export your library as JSON
-- Start quickly with curated sample observations
+- Save six observation types: text, image, link, color, quote, and idea
+- Browse an editorial, image-led library view
+- Search, filter, and sort your archive
+- Review recurring themes in the `Patterns` view
+- Generate a softer written recap in `Weekly Report`
+- Import and export your archive as JSON
+- Start with built-in sample observations
+- Reopen onboarding from Settings if needed
 - Switch between light and dark themes
 
 ## Tech Stack
 
-- Next.js 16
+- Next.js 16 App Router
 - React 19
 - TypeScript
 - Tailwind CSS 4
-- shadcn/ui-style components
-- Radix UI primitives
-- IndexedDB-backed local persistence
+- Radix UI primitives / shadcn-style component architecture
+- next-themes
+- Sonner
+- date-fns
+- lucide-react
+- Local browser persistence
 - Vercel Analytics
 
 ## Getting Started
@@ -353,316 +395,193 @@ pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Then open [http://localhost:3000](http://localhost:3000).
 
 ## Environment Variables
 
-No required environment variables are currently needed to run the app locally.
+No environment variables are required for the current version.
 
 ## Project Structure
 
 ```text
 app/
   (app)/
-    page.tsx          # Library / main capture experience
-    patterns/         # Pattern summaries and related themes
-    report/           # Weekly reflection report
-    settings/         # Theme, samples, import/export, storage info
-components/          # UI and product components
-lib/                 # Storage, sample data, observation logic, reports
-hooks/               # Client hooks
-public/              # Icons and sample media
+    page.tsx          # Library
+    patterns/page.tsx # Pattern analysis
+    report/page.tsx   # Weekly reflection
+    settings/page.tsx # Local settings, onboarding reset, import/export
+components/
+  quick-capture.tsx
+  observation-card.tsx
+  observation-grid.tsx
+  onboarding-banner.tsx
+lib/
+  store.ts
+  observations.ts
+  patterns.ts
+  weekly-report.ts
 ```
 
-## Customization
+## Customization Notes
 
-- Update the product name, metadata, and brand copy in the layout and UI components
-- Replace sample observations with content that matches your domain
-- Extend observation types if you want richer capture formats
-- Swap local persistence for a backend if you want sync or multi-device access
+- Replace the sample observations with your own demo content
+- Adjust observation types if your product needs a narrower or broader capture model
+- Rebrand the editorial shell, onboarding, and copy for your use case
+- Add sync, auth, collaboration, or AI features on top of the existing local-first foundation
 
 ## Deployment
 
-This project deploys cleanly as a standard Next.js app on Vercel.
+Deploy directly to Vercel as a standard Next.js app.
 
-## Credits
+## Credits / Attribution
 
-- Built with Next.js, React, Tailwind CSS, Radix UI, and Vercel
-- Design and product voice based on the current repository implementation
+- Built with Next.js, React, Tailwind CSS, and Radix UI primitives
+- If applicable, add development-tool credits here for Codex, ChatGPT, v0, or other tools used during the build
 
 ## License
 
-[LICENSE_PLACEHOLDER]
+[LICENSE]
 ```
+
+---
 
 ## 5. Social Launch Posts
 
-### X / Twitter
-
-**Variant 1**
+### X / Twitter Variant 1
 
 Built a small app called `Noticed`.
 
-It’s a calm, local-first place to save things that catch your attention: quotes, colors, images, links, and half-formed ideas. Then it turns them into patterns and a weekly reflection instead of another endless feed.
+It’s a local-first reference library for saving images, quotes, colors, links, and ideas in one calm place, then surfacing the patterns in what you keep returning to.
 
-Demo: [LIVE_DEMO_URL]  
-Code: [GITHUB_REPO_URL]
-
-Optional hashtags: `#nextjs #typescript #buildinpublic #indiehacker`
-
-**Variant 2**
-
-I wanted a notes app that felt quieter and more reflective.
-
-So I made `Noticed`: a browser-based field journal for small observations, with local storage, tagging, pattern summaries, and a weekly report built from what you actually saved.
+No accounts, no backend, just a browser-based archive that feels more like browsing a moodboard than managing a dashboard.
 
 [LIVE_DEMO_URL]  
 [GITHUB_REPO_URL]
 
-Optional hashtags: `#webdev #design #creativecoding`
+Optional hashtags: `#buildinpublic #nextjs #webdev #designtools #indiehacker`
 
-### LinkedIn
+### X / Twitter Variant 2
 
-Built a project called `Noticed`, a local-first field-notes app for collecting small things you want to keep: quotes, colors, links, images, text fragments, and early ideas.
+I wanted a quieter place to keep visual references and small fragments, so I built `Noticed`.
 
-What I like about it is that it does more than store notes. It looks back at what you captured and surfaces recurring themes in a `Patterns` view, then turns the week into a short written reflection.
+It stores everything locally, supports multiple save types, and includes a `Patterns` view + `Weekly Report` to reflect on what keeps recurring.
 
-It’s built with Next.js, TypeScript, Tailwind CSS, and reusable UI primitives, and it can also work well as a template for other local-first products.
+[LIVE_DEMO_URL]  
+[GITHUB_REPO_URL]
 
-Demo: [LIVE_DEMO_URL]  
-Repo: [GITHUB_REPO_URL]
+Optional hashtags: `#localfirst #nextjs #typescript #creativecoding`
 
-Optional hashtags: `#Nextjs #TypeScript #ProductDesign #Vercel`
+### LinkedIn Post
 
-### Short Announcement
+I’ve been working on a project called `Noticed`, a local-first reference library for images, quotes, colors, links, notes, and early ideas.
 
-`Noticed` is live: a calm, local-first app for saving observations and spotting patterns in what keeps catching your attention.
+The goal was to make something that feels calmer than a typical bookmarking tool or notes app. Instead of pushing the user into productivity workflows, the product focuses on lightweight capture, editorial browsing, and reflection. Over time, saved observations can be revisited through pattern summaries and a weekly report.
+
+It’s built with Next.js, TypeScript, Tailwind CSS, and Radix-based UI components, with all data stored locally in the browser.
 
 Demo: [LIVE_DEMO_URL]  
 Code: [GITHUB_REPO_URL]
 
-### Personal Build Story Post
+Optional hashtags: `#NextJS #TypeScript #ProductDesign #CreativeTools #BuildInPublic`
 
-I kept wanting a place to save small things without turning them into tasks.
+### Short Announcement
 
-Not bookmarks to optimize, not notes to organize immediately, just fragments worth keeping: a quote, a color, a line I heard, a reference image, a rough idea.
+`Noticed` is live: a local-first app for saving what catches your eye, then discovering the patterns in what you keep coming back to.
 
-So I built `Noticed`. It stores everything locally in the browser, keeps the capture flow light, and then reflects your own attention back to you through pattern summaries and a weekly report.
-
-It ended up feeling less like a productivity tool and more like a field journal.
-
-Demo: [LIVE_DEMO_URL]  
-Repo: [GITHUB_REPO_URL]
-
-### Technical “How It Was Built” Post
-
-`Noticed` is a Next.js + TypeScript app with a local-first storage model and a simple observation schema that supports text, image, link, color, quote, and idea entries.
-
-The interesting part wasn’t just capture. I wanted the data model to support reflective views, so the app computes top tags, recurring colors, type distribution, cadence, related themes, and a weekly prose summary from the saved observations.
-
-It also includes JSON import/export, sample seed content, theme switching, and a polished responsive UI built with Tailwind CSS and reusable Radix-based components.
-
-Demo: [LIVE_DEMO_URL]  
-Repo: [GITHUB_REPO_URL]
+[LIVE_DEMO_URL]
 
 ### Vercel / v0 Community-Oriented Post
 
-Built a small Next.js app called `Noticed` that I think also works well as a template.
+Built a new Next.js project called `Noticed`.
 
-It’s a local-first field-notes app with multi-type capture, JSON import/export, sample data, a pattern-analysis screen, and a weekly report generated from saved observations. No backend setup required in the current version.
+It’s a reusable local-first app for capturing references and revisiting them through patterns and weekly reflections. The current version includes multi-type capture, sample content, JSON import/export, and an editorial library UI that feels closer to a personal archive than a notes dashboard.
 
-I’d be interested in feedback on how people would position it: personal product, creative tool, or reusable template.
+Would be a good starting point for anyone building creative tools, private journals, or local-first personal software.
 
-Demo: [LIVE_DEMO_URL]  
-Repo: [GITHUB_REPO_URL]  
-Template: [VERCEL_TEMPLATE_URL]
+[LIVE_DEMO_URL]  
+[GITHUB_REPO_URL]  
+[VERCEL_TEMPLATE_URL]
 
 ### OpenAI / Codex Community-Oriented Post
 
-Built `Noticed`, a calm local-first app for saving small observations and turning them into patterns.
+Built `Noticed`, a local-first reference library for saving images, quotes, colors, links, notes, and ideas.
 
-The app itself doesn’t use OpenAI at runtime, but it’s a good example of the kind of product/UI work that can be accelerated with tools like Codex or ChatGPT during implementation, polish, and iteration.
+The app itself doesn’t use OpenAI at runtime, but AI-assisted development was useful for iterating on product copy, UI behavior, and implementation details. The interesting part for me was using AI help to refine a real product surface rather than just generate a generic starter.
 
-It combines a clean capture flow with reflective views like `Patterns` and `Weekly Report`, which made it a nice project for testing product framing, component composition, and local-first UX.
+[LIVE_DEMO_URL]  
+[GITHUB_REPO_URL]  
+[OPENAI_SHOWCASE_URL]
 
-Demo: [LIVE_DEMO_URL]  
-Repo: [GITHUB_REPO_URL]
+Optional hashtags: `#OpenAI #Codex #AIEngineering #NextJS`
 
-Optional hashtags: `#OpenAI #Codex #Nextjs #BuildInPublic`
+---
 
-## 6. Vercel Community Forum Blog Post / Project Overview
+## 6. OpenAI / Codex Community Post
 
-### Title
+### Project Overview
 
-`Built Noticed: a calm local-first field-notes app in Next.js`
+`Noticed` is a local-first reference and reflection app built for the small things that are easy to lose: visual references, quotes, colors, links, notes, and early ideas. The finished product demonstrates how a simple browser app can feel thoughtful and complete without requiring a backend or account system.
 
-### Forum-Ready Post
+### What Was Built
 
-I’ve been working on a small project called `Noticed`, and I thought it might be interesting to share here because it sits somewhere between a personal app and a reusable template.
+- A multi-type capture flow for six kinds of observations
+- An editorial library view for browsing saved references
+- A `Patterns` page for repeated themes, colors, and cadence
+- A `Weekly Report` page for reflective summaries
+- Settings for import/export, sample content, themes, and onboarding reset
+- First-run onboarding modal
 
-`Noticed` is a local-first field-notes app for saving small things that catch your attention: text notes, links, images, colors, quotes, and ideas. The main goal was to make capture feel lightweight and personal, then make the saved data feel meaningful later.
+### How Codex or ChatGPT Helped
 
-Instead of stopping at CRUD, the app includes two reflective views:
+Suggested framing:
 
-- `Patterns`, which surfaces recurring tags, type distribution, colors, cadence, and related themes
-- `Weekly Report`, which turns the week’s saved observations into a short written summary
+`Codex and/or ChatGPT helped with implementation, UI refinement, debugging, product copy, and iteration on the final browsing experience. The tools were especially useful for tightening the relationship between visual design direction and actual working code.`
 
-It’s built with Next.js, React, TypeScript, Tailwind CSS, and a shadcn/ui-style component setup. The current version stores everything locally in the browser, includes sample seed content for first-run demos, and supports JSON import/export.
+### What Parts Were Designed, Generated, Implemented, Debugged, or Refined With AI Assistance
 
-One thing I found interesting was balancing product tone with implementation. I wanted it to feel calm and intentional, not like another productivity dashboard. That shaped both the copy and the UI decisions.
+- UI refinement for the library shell and visual direction
+- Copy rewriting for onboarding and marketing surfaces
+- Implementation help across layout, branding, modal behavior, and settings
+- Debugging visual regressions and interaction issues
+- Launch asset preparation and submission copy
 
-### Links
+### What the Final Project Demonstrates
 
-- Demo: `[LIVE_DEMO_URL]`
-- GitHub: `[GITHUB_REPO_URL]`
-- Vercel template: `[VERCEL_TEMPLATE_URL]`
+- A practical local-first product built on a modern web stack
+- A more grounded way to use AI assistance during product iteration
+- How an app can combine capture, browsing, and reflection in one flow
+- How AI-assisted development can support polish, not just scaffolding
 
-### Screenshots
+### What Others Might Learn From It
 
-- Library view: `[COVER_IMAGE_URL]`
-- Patterns view: `[PATTERNS_SCREENSHOT_URL]`
-- Weekly report view: `[REPORT_SCREENSHOT_URL]`
+- Local-first apps can still feel premium and productized
+- Reflection features can create differentiation beyond CRUD
+- AI tools are most useful when used iteratively against a real product direction
+- Marketing and submission content are easier to prepare when product positioning is explicit
 
-### Feedback Request
-
-I’d especially like feedback on:
-
-- whether the positioning reads more like a real end-user app or a template
-- whether the reflective views feel genuinely useful
-- how you’d describe the project to new builders discovering it
-
-## 7. OpenAI / Codex Community Post
-
-### Title
-
-`Built Noticed, a local-first reflection app for small observations`
-
-### Post
-
-I built a project called `Noticed`, a browser-based app for saving small observations like quotes, colors, links, images, and ideas.
-
-The interesting part is that it does more than store notes. It turns saved observations into reflective views: a `Patterns` screen that surfaces recurring themes and a `Weekly Report` that writes a short summary from what you captured.
-
-If you used Codex or ChatGPT while building it, this is a good example of where those tools help without becoming runtime dependencies. They can help with:
-
-- shaping product copy and UX tone
-- iterating on component structure and flows
-- implementing storage and derived views
-- refining details like import/export, sample data, and empty states
-
-The final project demonstrates a calmer kind of app-building: local-first, no account wall, no backend dependency, and product behavior that comes from thoughtful use of saved data rather than from a large feature surface.
-
-What others might take from it:
-
-- local-first products can still feel polished and complete
-- AI-assisted coding is especially useful for iteration and refinement
-- small data models can power meaningful product behavior if the derived views are well designed
-
-### Links
+### Links and Screenshot Placeholders
 
 - Demo: `[LIVE_DEMO_URL]`
 - GitHub: `[GITHUB_REPO_URL]`
-- Showcase: `[OPENAI_SHOWCASE_URL]`
+- OpenAI showcase: `[OPENAI_SHOWCASE_URL]`
+- Cover / screenshots: `[COVER_IMAGE_URL]`
 
-### Screenshots
+---
 
-- Main screen: `[COVER_IMAGE_URL]`
-- Patterns screen: `[PATTERNS_SCREENSHOT_URL]`
-- Weekly report screen: `[REPORT_SCREENSHOT_URL]`
+## 7. Quick Copy Snippets
 
-## 8. Press / Media Kit Copy
+### App Storefront Summary
 
-### Very Short Boilerplate
+`Noticed is a local-first reference library for saving visual and textual fragments in one calm place, then discovering the patterns in what keeps returning.`
 
-`Noticed is a local-first field-notes app for collecting observations and reflecting on the patterns in what you keep noticing.`
+### Builder Summary
 
-### Longer Boilerplate
+`A polished Next.js template for local-first capture, editorial browsing, and lightweight reflection.`
 
-`Noticed` is a browser-based field-notes app built for small fragments worth keeping: quotes, links, images, colors, text notes, and early ideas. Everything is stored locally on the device, and the app helps users look back on what they saved through pattern summaries and a weekly reflection report. It is both a usable personal tool and a strong template for calm, local-first product design.
+### Reviewer Summary
 
-### Founder / Maker Quote Placeholder
+`This project is not just a note taker. Its value is the combination of multi-type capture, moodboard-like browsing, and reflective views built on top of browser-local persistence.`
 
-`"[MAKER_QUOTE_ABOUT_BUILDING_NOTICED]"`  
-`[AUTHOR_NAME], maker of Noticed`
+### Cover Image Reminder
 
-### Key Facts
-
-- Product name: `Noticed`
-- Category: `App` / `Creative tool` / `Template`
-- Platform: Web
-- Storage model: Local-first, browser storage
-- Core entry types: text, image, link, color, quote, idea
-- Key views: Library, Patterns, Weekly Report, Settings
-- Stack: Next.js, React, TypeScript, Tailwind CSS, Radix UI
-- Deployment target: Vercel
-
-### Suggested Screenshots
-
-- Library screen with capture composer
-- Patterns screen showing tags and color swatches
-- Weekly report screen with generated prose
-- Settings screen showing local-storage and import/export messaging
-
-### Suggested Alt Text for Images
-
-- `Noticed library view showing a calm note-capture interface with observation cards and filters`
-- `Patterns view showing recurring tags, colors, and related observation threads`
-- `Weekly report view summarizing the user's recent observations in prose`
-- `Settings view showing local-first storage details and JSON import/export controls`
-
-### Suggested OG Image Text
-
-- `Noticed`
-- `A quiet place for what you notice`
-- `Capture. Reflect. Notice patterns.`
-
-## 9. Reusable Copy Snippets
-
-### 25-Character Description
-
-`A quiet noticing app`
-
-### 50-Character Description
-
-`Local-first notes for what keeps catching your eye`
-
-### 100-Character Description
-
-`Capture quotes, colors, links, images, and ideas, then spot patterns in what you keep noticing.`
-
-### 160-Character Meta Description
-
-`A calm, local-first field-notes app for saving observations, references, quotes, colors, and ideas, then reflecting on the patterns they form.`
-
-### 255-Character OpenAI Showcase-Friendly Tagline / Summary
-
-`Noticed is a local-first field-notes app for capturing small observations like quotes, links, colors, images, and ideas, then turning them into reflective views such as recurring patterns and a weekly report built from what you saved.`
-
-### 500-Character Build Process Summary
-
-`Noticed was built as a local-first Next.js app with TypeScript, Tailwind CSS, and reusable Radix-based UI components. The product focuses on lightweight capture and meaningful derived views rather than a backend-heavy setup. Saved observations power a Patterns screen and a Weekly Report, while IndexedDB-based storage, sample data, and JSON import/export make the app easy to try, demo, and extend.`
-
-### 500-Character Setup Summary
-
-`Clone the repository, run pnpm install, then start the app with pnpm dev and open http://localhost:3000. No database, auth provider, or environment variables are required in the current version. Data is stored locally in the browser, and the app includes sample observations plus JSON import/export for testing and transfer.`
-
-### 1000-Character Project Description
-
-`Noticed is a browser-based, local-first field-notes app for saving the small things that catch your attention: a quote, a color, a useful link, a reference image, a passing thought, or an early product idea. The interface is intentionally calm and lightweight, so capture feels closer to jotting something down than maintaining a system. Everything is stored locally on the device, with no required account or backend in the current version. What makes the project more than a simple note app is what happens after capture. A Patterns view surfaces recurring tags, entry types, related themes, recurring colors, and noticing cadence, while a Weekly Report turns recent activity into a short reflective summary. The result is a product that works both as a personal creative tool and as a reusable template for local-first journaling, inspiration capture, and reflection-focused app ideas.`
-
-## Final Placeholder Checklist
-
-Replace these before publishing:
-
-- `[LIVE_DEMO_URL]`
-- `[GITHUB_REPO_URL]`
-- `[VERCEL_TEMPLATE_URL]`
-- `[V0_TEMPLATE_URL]`
-- `[OPENAI_SHOWCASE_URL]`
-- `[COVER_IMAGE_URL]`
-- `[PATTERNS_SCREENSHOT_URL]`
-- `[REPORT_SCREENSHOT_URL]`
-- `[AUTHOR_NAME]`
-- `[LICENSE_PLACEHOLDER]`
-- Codex / ChatGPT usage confirmation
-- Any other coding agent usage confirmation
+Use `[COVER_IMAGE_URL]` and choose a screenshot that shows the main library hero, capture composer, and a representative spread of cards. If possible, prepare a second composite image that includes `Patterns` and `Weekly Report`.
