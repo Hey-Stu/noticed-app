@@ -12,14 +12,20 @@ export function ThemeToggle({ className }: { className?: string }) {
   useEffect(() => setMounted(true), [])
 
   const isDark = resolvedTheme === 'dark'
+  const label = mounted
+    ? isDark
+      ? 'Switch to Daylight'
+      : 'Switch to Evening'
+    : 'Toggle theme'
+  const title = mounted ? (isDark ? 'Daylight' : 'Evening') : 'Toggle theme'
 
   return (
     <Button
       variant="ghost"
       size="icon"
       className={className}
-      aria-label={isDark ? 'Switch to Daylight' : 'Switch to Evening'}
-      title={mounted ? (isDark ? 'Daylight' : 'Evening') : 'Toggle theme'}
+      aria-label={label}
+      title={title}
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
     >
       {mounted ? (

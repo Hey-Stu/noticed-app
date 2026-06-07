@@ -1,17 +1,10 @@
 import type { Metadata, Viewport } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
-import { Cormorant_Garamond } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
-
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  variable: '--font-cormorant',
-  weight: ['400', '500', '600', '700'],
-})
 
 export const metadata: Metadata = {
   title: 'Noticed — a quiet place for what you notice',
@@ -26,8 +19,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f5efe3' },
-    { media: '(prefers-color-scheme: dark)', color: '#2b2723' },
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
   ],
 }
 
@@ -40,7 +33,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${GeistSans.variable} ${GeistMono.variable} ${cormorant.variable} bg-background`}
+      className={`${GeistSans.variable} ${GeistMono.variable} bg-background`}
     >
       <body className="font-sans antialiased">
         <ThemeProvider
