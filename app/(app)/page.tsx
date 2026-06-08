@@ -91,7 +91,7 @@ export default function LibraryPage() {
 
   return (
     <div className="space-y-8">
-      <section className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_24rem]">
+      <section className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_20rem] xl:items-start">
         <div className="space-y-5">
           <div className="space-y-4">
             <p className="text-xs font-medium uppercase tracking-[0.24em] text-muted-foreground">
@@ -112,39 +112,36 @@ export default function LibraryPage() {
           <QuickCapture tagSuggestions={tags} onAdd={addObservation} />
         </div>
 
-        <aside className="bg-grain rounded-[2rem] border border-border/80 p-5 shadow-paper">
+        <aside className="bg-grain xl:sticky xl:top-24 rounded-[1.6rem] border border-border/80 p-4 shadow-paper">
           <p className="text-xs font-medium uppercase tracking-[0.22em] text-muted-foreground">
             At a glance
           </p>
-          <div className="mt-5 grid gap-4 sm:grid-cols-3 xl:grid-cols-1">
-            <div className="space-y-1">
-              <p className="font-serif text-4xl font-semibold">
+
+          <div className="mt-3 grid gap-2.5">
+            <div className="flex items-baseline justify-between gap-4 rounded-2xl border border-border/70 bg-background/72 px-4 py-3">
+              <span className="text-sm text-muted-foreground">Saved references</span>
+              <span className="font-serif text-3xl font-semibold">
                 {hydrated ? observations.length : '—'}
-              </p>
-              <p className="text-sm text-muted-foreground">Saved references</p>
+              </span>
             </div>
-            <div className="space-y-1">
-              <p className="font-serif text-4xl font-semibold">
+            <div className="flex items-baseline justify-between gap-4 rounded-2xl border border-border/70 bg-background/72 px-4 py-3">
+              <span className="text-sm text-muted-foreground">Tags in rotation</span>
+              <span className="font-serif text-3xl font-semibold">
                 {hydrated ? tags.length : '—'}
-              </p>
-              <p className="text-sm text-muted-foreground">Tags in rotation</p>
+              </span>
             </div>
-            <div className="space-y-1">
-              <p className="font-serif text-4xl font-semibold">
+            <div className="flex items-baseline justify-between gap-4 rounded-2xl border border-border/70 bg-background/72 px-4 py-3">
+              <span className="text-sm text-muted-foreground">Latest addition</span>
+              <span className="font-serif text-3xl font-semibold">
                 {hydrated && observations[0]
                   ? new Date(observations[0].createdAt).toLocaleDateString(undefined, {
                       month: 'short',
                       day: 'numeric',
                     })
                   : '—'}
-              </p>
-              <p className="text-sm text-muted-foreground">Latest addition</p>
+              </span>
             </div>
           </div>
-          <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-            The closer this page feels to browsing inspiration, the more the
-            references get to lead.
-          </p>
         </aside>
       </section>
 

@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
   BookOpen,
-  Eye,
   FileText,
   Settings as SettingsIcon,
   Sparkles,
@@ -21,7 +20,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
-import { ThemeToggle } from '@/components/theme-toggle'
 
 const NAV = [
   { title: 'Library', href: '/', icon: BookOpen, hint: 'Everything you noticed' },
@@ -30,59 +28,12 @@ const NAV = [
   { title: 'Settings', href: '/settings', icon: SettingsIcon, hint: 'Your space' },
 ]
 
-function BrandMark() {
-  return (
-    <span className="grid size-6 place-items-center text-foreground">
-      <Eye
-        className="brand-eye-open col-start-1 row-start-1 size-6 opacity-100"
-        aria-hidden="true"
-        strokeWidth={2}
-      />
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="brand-eye-closed col-start-1 row-start-1 size-6 opacity-0"
-        aria-hidden="true"
-      >
-        <path d="m15 18-.722-3.25" />
-        <path d="M2 8a10.645 10.645 0 0 0 20 0" />
-        <path d="m20 15-1.726-2.05" />
-        <path d="m4 15 1.726-2.05" />
-        <path d="m9 18 .722-3.25" />
-      </svg>
-    </span>
-  )
-}
-
 export function AppSidebar() {
   const pathname = usePathname()
 
   return (
     <Sidebar className="border-r border-sidebar-border/70">
-      <SidebarHeader className="px-4 pt-5 pb-3">
-        <Link
-          href="/"
-          aria-label="Go to Library"
-          className="brand-logo flex items-center gap-2.5 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring"
-        >
-          <BrandMark />
-          <div className="space-y-1">
-            <span className="block font-serif text-3xl font-semibold tracking-[0.02em]">
-              Noticed
-            </span>
-            <span className="block text-xs uppercase tracking-[0.22em] text-muted-foreground">
-              Personal archive
-            </span>
-          </div>
-        </Link>
-      </SidebarHeader>
+      <SidebarHeader className="px-4 pt-5 pb-1" />
 
       <SidebarContent className="px-3">
         <SidebarGroup>
@@ -124,9 +75,8 @@ export function AppSidebar() {
           <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
             Local-first
           </p>
-          <div className="mt-2 flex items-center justify-between gap-2">
+          <div className="mt-2">
             <span className="text-sm text-foreground">Stored on this device</span>
-            <ThemeToggle className="size-8" />
           </div>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
             Keep references, quotes, colors, and notes without turning the
