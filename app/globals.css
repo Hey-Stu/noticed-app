@@ -146,6 +146,7 @@
   }
   body {
     @apply min-h-svh bg-background text-foreground;
+    letter-spacing: -0.15px;
   }
 }
 

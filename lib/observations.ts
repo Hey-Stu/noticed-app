@@ -160,7 +160,7 @@ export function sanitizeImportedObservation(raw: unknown): Observation | null {
 /** A short, human-readable preview string for any observation. */
 export function previewText(o: Observation): string {
   if (o.body) return o.body
-  if (o.type === 'color' && o.color) return o.color.toUpperCase()
+  if (o.type === 'color' && o.color) return o.color
   if (o.type === 'link') return o.title || o.url || 'Untitled link'
   if (o.type === 'image') return o.title || 'Image'
   return o.title || 'Untitled'

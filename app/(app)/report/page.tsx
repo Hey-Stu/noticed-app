@@ -57,7 +57,7 @@ export default function ReportPage() {
           {/* report sheet */}
           <article className="overflow-hidden rounded-2xl border border-border bg-card shadow-paper">
             <header className="border-b border-border/60 bg-secondary/30 px-6 py-5">
-              <p className="text-xs font-medium uppercase tracking-wider text-primary">
+              <p className="text-xs font-medium text-primary">
                 {report.rangeLabel}
               </p>
               <h2 className="mt-1 font-serif text-2xl font-semibold text-balance">

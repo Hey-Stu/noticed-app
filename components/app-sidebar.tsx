@@ -37,7 +37,7 @@ export function AppSidebar() {
 
       <SidebarContent className="px-3">
         <SidebarGroup>
-          <SidebarGroupLabel className="px-1 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+          <SidebarGroupLabel className="px-1 text-[11px] text-muted-foreground">
             Browse
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -72,7 +72,7 @@ export function AppSidebar() {
 
       <SidebarFooter className="px-4 pb-5">
         <div className="rounded-[1.25rem] border border-sidebar-border/70 bg-sidebar-accent/50 p-3">
-          <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             Local-first
           </p>
           <div className="mt-2">

@@ -91,58 +91,19 @@ export default function LibraryPage() {
 
   return (
     <div className="space-y-8">
-      <section className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_20rem] xl:items-start">
-        <div className="space-y-5">
-          <div className="space-y-4">
-            <p className="text-xs font-medium uppercase tracking-[0.24em] text-muted-foreground">
-              Your visual library
-            </p>
-            <div className="max-w-4xl space-y-3">
-              <h1 className="font-serif text-5xl font-semibold leading-[0.95] text-balance md:text-7xl">
-                A warmer, quieter place to collect what catches your eye.
-              </h1>
-              <p className="max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
-                Keep references, images, colors, links, and stray thoughts in a
-                surface that feels more like browsing a moodboard than managing
-                a dashboard.
-              </p>
-            </div>
-          </div>
-
-          <QuickCapture tagSuggestions={tags} onAdd={addObservation} />
+      <section className="space-y-6">
+        <div className="max-w-4xl space-y-3">
+          <h1 className="font-serif text-5xl font-semibold leading-[0.95] text-balance md:text-7xl">
+            A warmer, quieter place to collect what catches your eye.
+          </h1>
+          <p className="max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
+            Keep references, images, colors, links, and stray thoughts in a
+            surface that feels more like browsing a moodboard than managing
+            a dashboard.
+          </p>
         </div>
 
-        <aside className="bg-grain xl:sticky xl:top-24 rounded-[1.6rem] border border-border/80 p-4 shadow-paper">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-muted-foreground">
-            At a glance
-          </p>
-
-          <div className="mt-3 grid gap-2.5">
-            <div className="flex items-baseline justify-between gap-4 rounded-2xl border border-border/70 bg-background/72 px-4 py-3">
-              <span className="text-sm text-muted-foreground">Saved references</span>
-              <span className="font-serif text-3xl font-semibold">
-                {hydrated ? observations.length : '—'}
-              </span>
-            </div>
-            <div className="flex items-baseline justify-between gap-4 rounded-2xl border border-border/70 bg-background/72 px-4 py-3">
-              <span className="text-sm text-muted-foreground">Tags in rotation</span>
-              <span className="font-serif text-3xl font-semibold">
-                {hydrated ? tags.length : '—'}
-              </span>
-            </div>
-            <div className="flex items-baseline justify-between gap-4 rounded-2xl border border-border/70 bg-background/72 px-4 py-3">
-              <span className="text-sm text-muted-foreground">Latest addition</span>
-              <span className="font-serif text-3xl font-semibold">
-                {hydrated && observations[0]
-                  ? new Date(observations[0].createdAt).toLocaleDateString(undefined, {
-                      month: 'short',
-                      day: 'numeric',
-                    })
-                  : '—'}
-              </span>
-            </div>
-          </div>
-        </aside>
+        <QuickCapture tagSuggestions={tags} onAdd={addObservation} />
       </section>
 
       {hydrated && !settings.onboardingDismissed ? (
@@ -163,19 +124,37 @@ export default function LibraryPage() {
       ) : (
         <>
           <section className="space-y-5">
-            <div className="flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
-              <div className="space-y-2">
-                <p className="text-xs font-medium uppercase tracking-[0.22em] text-muted-foreground">
-                  Browse the archive
-                </p>
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+              <div>
                 <h2 className="font-serif text-3xl font-semibold md:text-4xl">
                   References worth returning to
                 </h2>
               </div>
-              <div className="text-sm text-muted-foreground">
-                {filtered.length}{' '}
-                {filtered.length === 1 ? 'observation' : 'observations'}
-                {hasFilters ? ' match your current view' : ' in the current archive'}
+
+              <div className="flex max-w-xl flex-wrap justify-start gap-2 lg:justify-end">
+                <div className="inline-flex items-center gap-3 rounded-full border border-border/70 bg-card/80 px-4 py-2 shadow-paper">
+                  <span className="text-xs text-muted-foreground">Saved references</span>
+                  <span className="font-serif text-lg font-semibold">
+                    {hydrated ? observations.length : '—'}
+                  </span>
+                </div>
+                <div className="inline-flex items-center gap-3 rounded-full border border-border/70 bg-card/80 px-4 py-2 shadow-paper">
+                  <span className="text-xs text-muted-foreground">Tags in rotation</span>
+                  <span className="font-serif text-lg font-semibold">
+                    {hydrated ? tags.length : '—'}
+                  </span>
+                </div>
+                <div className="inline-flex items-center gap-3 rounded-full border border-border/70 bg-card/80 px-4 py-2 shadow-paper">
+                  <span className="text-xs text-muted-foreground">Latest addition</span>
+                  <span className="font-serif text-lg font-semibold">
+                    {hydrated && observations[0]
+                      ? new Date(observations[0].createdAt).toLocaleDateString(undefined, {
+                          month: 'short',
+                          day: 'numeric',
+                        })
+                      : '—'}
+                  </span>
+                </div>
               </div>
             </div>
 

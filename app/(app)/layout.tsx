@@ -51,7 +51,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
               className="brand-logo flex items-center gap-2.5 rounded-md outline-none transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:ring-ring"
             >
               <BrandMark />
-              <span className="font-serif text-2xl font-semibold tracking-[0.02em]">
+              <span className="font-serif text-2xl font-semibold">
                 Noticed
               </span>
             </Link>

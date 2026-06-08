@@ -156,7 +156,7 @@ export function QuickCapture({
     >
       {/* type selector */}
       <div className="mb-4 flex flex-wrap items-center gap-2">
-        <span className="mr-2 text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
+        <span className="mr-2 text-[11px] font-medium text-muted-foreground">
           Add something worth keeping
         </span>
         {TYPE_ORDER.map((t) => {
@@ -212,9 +212,9 @@ export function QuickCapture({
           </label>
           <div>
             <Input
-              value={color.toUpperCase()}
+              value={color}
               onChange={(e) => setColor(e.target.value)}
-              className="w-32 rounded-full border-border/70 bg-card/70 font-mono text-sm uppercase"
+              className="w-32 rounded-full border-border/70 bg-card/70 font-mono text-sm"
               aria-label="Hex color"
             />
             <p className="mt-1 text-xs text-muted-foreground">
@@ -326,7 +326,7 @@ export function QuickCapture({
               </div>
 
               <div className="mt-3 space-y-2">
-                <p className="px-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                <p className="px-1 text-xs font-medium text-muted-foreground">
                   Or use an image URL
                 </p>
                 <Input
@@ -384,7 +384,7 @@ export function QuickCapture({
           </div>
         </div>
       ) : (
-        <div className="mt-3 flex items-center gap-2 px-1 text-xs uppercase tracking-[0.14em] text-muted-foreground">
+        <div className="mt-3 flex items-center gap-2 px-1 text-xs text-muted-foreground">
           <ImagePlus className="size-3.5" />
           <span>Capture a fragment: a color, a quote, a passing thought.</span>
         </div>

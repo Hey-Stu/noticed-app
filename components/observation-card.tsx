@@ -51,7 +51,7 @@ export function ObservationCard({
             className="flex h-28 items-end p-3"
             style={{ backgroundColor: observation.color }}
           >
-            <span className="rounded-md bg-background/85 px-2 py-0.5 font-mono text-xs font-medium uppercase text-foreground backdrop-blur">
+            <span className="rounded-md bg-background/85 px-2 py-0.5 font-mono text-xs font-medium text-foreground backdrop-blur">
               {observation.color}
             </span>
           </div>
@@ -85,7 +85,7 @@ export function ObservationCard({
                   {summary}
                 </p>
               </div>
-              <time className="shrink-0 pt-1 text-[11px] uppercase tracking-[0.16em] text-white/72">
+              <time className="shrink-0 pt-1 text-[11px] text-white/72">
                 {time}
               </time>
             </div>
@@ -95,7 +95,7 @@ export function ObservationCard({
         <div className={cn('flex flex-1 flex-col gap-3 p-5', isImageCard && 'sr-only')}>
           <div className="flex items-center justify-between gap-3">
             <TypeBadge type={observation.type} />
-            <time className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+            <time className="text-[11px] text-muted-foreground">
               {time}
             </time>
           </div>
@@ -110,7 +110,7 @@ export function ObservationCard({
                 {observation.body}
               </p>
               {observation.source ? (
-                <footer className="text-sm uppercase tracking-[0.14em] text-muted-foreground">
+                <footer className="text-sm text-muted-foreground">
                   — {observation.source}
                 </footer>
               ) : null}
@@ -138,7 +138,7 @@ export function ObservationCard({
                 </p>
               ) : null}
               {observation.type === 'link' && observation.url ? (
-                <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--type-link)]">
+                <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-medium text-[var(--type-link)]">
                   <ExternalLink className="size-3" />
                   {hostOf(observation.url)}
                 </span>
@@ -151,7 +151,7 @@ export function ObservationCard({
               {observation.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-secondary/80 px-2.5 py-1 text-[11px] uppercase tracking-[0.12em] text-muted-foreground"
+                  className="rounded-full bg-secondary/80 px-2.5 py-1 text-[11px] text-muted-foreground"
                 >
                   #{tag}
                 </span>

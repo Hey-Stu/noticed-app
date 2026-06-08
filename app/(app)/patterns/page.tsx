@@ -200,7 +200,7 @@ export default function PatternsPage() {
                         className="size-14 rounded-xl border border-border shadow-paper transition-transform group-hover:scale-105"
                         style={{ backgroundColor: swatch.color }}
                       />
-                      <span className="font-mono text-[10px] uppercase text-muted-foreground">
+                      <span className="font-mono text-[10px] text-muted-foreground">
                         {swatch.color}
                       </span>
                     </button>

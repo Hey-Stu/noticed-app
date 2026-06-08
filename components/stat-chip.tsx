@@ -23,7 +23,7 @@ export function StatChip({
     >
       <div className="flex items-center gap-2 text-muted-foreground">
         {Icon ? <Icon className="size-4" /> : null}
-        <span className="text-xs font-medium uppercase tracking-wide">
+        <span className="text-xs font-medium">
           {label}
         </span>
       </div>

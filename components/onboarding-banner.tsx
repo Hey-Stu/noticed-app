@@ -25,7 +25,7 @@ export function OnboardingBanner({
         <div className="overflow-hidden rounded-[2rem] bg-background">
           <div className="bg-grain border-b border-border/60 px-6 py-5 md:px-8">
             <div className="space-y-1">
-              <p className="text-xs font-medium uppercase tracking-[0.22em] text-muted-foreground">
+              <p className="text-xs font-medium text-muted-foreground">
                 Welcome to Noticed
               </p>
               <DialogHeader className="gap-1 text-left">
@@ -54,7 +54,7 @@ export function OnboardingBanner({
 
             <div className="grid gap-3 rounded-[1.5rem] border border-border/70 bg-card/70 p-4 md:grid-cols-3">
               <div>
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                <p className="text-xs font-medium text-muted-foreground">
                   Capture
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-foreground">
@@ -62,7 +62,7 @@ export function OnboardingBanner({
                 </p>
               </div>
               <div>
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                <p className="text-xs font-medium text-muted-foreground">
                   Browse
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-foreground">
@@ -70,7 +70,7 @@ export function OnboardingBanner({
                 </p>
               </div>
               <div>
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                <p className="text-xs font-medium text-muted-foreground">
                   Reflect
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-foreground">

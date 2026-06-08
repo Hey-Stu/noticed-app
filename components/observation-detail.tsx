@@ -102,7 +102,7 @@ export function ObservationDetail({
               className="flex h-40 items-end rounded-xl border border-border p-3 shadow-paper"
               style={{ backgroundColor: observation.color }}
             >
-              <span className="rounded-md bg-background/85 px-2 py-1 font-mono text-sm font-medium uppercase backdrop-blur">
+              <span className="rounded-md bg-background/85 px-2 py-1 font-mono text-sm font-medium backdrop-blur">
                 {observation.color}
               </span>
             </div>

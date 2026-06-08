@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'A calm, local-first field-notes app for collecting small observations, references, quotes, colors, and ideas — then discovering the patterns in what you keep noticing.',
   icons: {
-    icon: [{ url: '/favicon.png', type: 'image/png', sizes: '256x256' }],
+    icon: [{ url: '/favicon.png', type: 'image/png', sizes: '1024x1024' }],
     shortcut: '/favicon.png',
     apple: '/apple-icon.png',
   },
