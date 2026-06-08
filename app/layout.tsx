@@ -7,6 +7,7 @@ import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://your-noticed-app.vercel.app/'),
   title: 'Noticed — a quiet place for what you notice',
   description:
     'A calm, local-first field-notes app for collecting small observations, references, quotes, colors, and ideas — then discovering the patterns in what you keep noticing.',
@@ -14,6 +15,26 @@ export const metadata: Metadata = {
     icon: [{ url: '/favicon.png', type: 'image/png', sizes: '1024x1024' }],
     shortcut: '/favicon.png',
     apple: '/apple-icon.png',
+  },
+  openGraph: {
+    title: 'Noticed — a quiet place for what you notice',
+    description:
+      'A calm, local-first field-notes app for collecting small observations, references, quotes, colors, and ideas — then discovering the patterns in what you keep noticing.',
+    images: [
+      {
+        url: '/noticed-cover.png',
+        width: 1920,
+        height: 1440,
+        alt: 'Noticed app preview',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Noticed — a quiet place for what you notice',
+    description:
+      'A calm, local-first field-notes app for collecting small observations, references, quotes, colors, and ideas — then discovering the patterns in what you keep noticing.',
+    images: ['/noticed-cover.png'],
   },
 }
 
