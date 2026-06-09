@@ -30,7 +30,6 @@ export default function PatternsPage() {
     hydrated,
     updateObservation,
     deleteObservation,
-    toggleFavorite,
   } = useObservations()
 
   const [selected, setSelected] = useState<Observation | null>(null)
@@ -279,7 +278,6 @@ export default function PatternsPage() {
         tagSuggestions={tags}
         onUpdate={updateObservation}
         onDelete={deleteObservation}
-        onToggleFavorite={toggleFavorite}
       />
     </div>
   )

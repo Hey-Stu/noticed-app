@@ -187,6 +187,8 @@ export default function LibraryPage() {
             <ObservationGrid
               observations={filtered}
               onOpen={openDetail}
+              cardSize={settings.libraryCardSize}
+              cardSpacing={settings.libraryCardPadding}
             />
           )}
         </>

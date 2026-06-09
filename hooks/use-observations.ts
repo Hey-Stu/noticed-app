@@ -16,12 +16,14 @@ import {
   importData,
 } from '@/lib/store'
 
-const SERVER_SNAPSHOT = {
+const SERVER_SNAPSHOT: ReturnType<typeof getSnapshot> = {
   observations: [],
   settings: {
     onboardingDismissed: false,
     samplesSeeded: false,
     samplesCleared: false,
+    libraryCardSize: 50,
+    libraryCardPadding: 50,
   },
   hydrated: false,
 } as const

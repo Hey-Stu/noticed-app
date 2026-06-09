@@ -56,10 +56,7 @@ export function buildWeeklyReport(observations: Observation[]): WeeklyReport {
     ? OBSERVATION_TYPES[dominantType.type].label
     : null
 
-  const highlight =
-    week.find((o) => o.favorite) ??
-    [...week].sort((a, b) => b.tags.length - a.tags.length)[0] ??
-    null
+  const highlight = [...week].sort((a, b) => b.tags.length - a.tags.length)[0] ?? null
 
   const paragraphs: string[] = []
 

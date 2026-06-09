@@ -19,9 +19,11 @@ function hostOf(url?: string): string | null {
 export function ObservationCard({
   observation,
   onOpen,
+  cardGap,
 }: {
   observation: Observation
   onOpen: (o: Observation) => void
+  cardGap: number
 }) {
   const config = getTypeConfig(observation.type)
   const time = formatDistanceToNow(observation.createdAt, { addSuffix: true })
@@ -32,8 +34,9 @@ export function ObservationCard({
 
   return (
     <article
+      style={{ marginBottom: `${cardGap}px` }}
       className={cn(
-        'group relative mb-5 flex break-inside-avoid flex-col overflow-hidden rounded-[1.75rem] text-left transition-all duration-300 hover:-translate-y-1',
+        'group relative flex break-inside-avoid flex-col overflow-hidden rounded-[1.75rem] text-left transition-all duration-300 hover:-translate-y-1',
         isImageCard
           ? 'bg-card shadow-paper hover:shadow-paper-lg'
           : 'bg-card/82 ring-1 ring-border/70 shadow-paper hover:shadow-paper-lg',
@@ -92,7 +95,12 @@ export function ObservationCard({
           </div>
         ) : null}
 
-        <div className={cn('flex flex-1 flex-col gap-3 p-5', isImageCard && 'sr-only')}>
+        <div
+          className={cn(
+            'flex flex-1 flex-col gap-3 p-5',
+            isImageCard && 'sr-only',
+          )}
+        >
           <div className="flex items-center justify-between gap-3">
             <TypeBadge type={observation.type} />
             <time className="text-[11px] text-muted-foreground">

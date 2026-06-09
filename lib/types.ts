@@ -34,6 +34,10 @@ export interface NoticedSettings {
   samplesSeeded: boolean
   /** When true, samples were intentionally cleared and should not be re-seeded */
   samplesCleared: boolean
+  /** Slider-controlled size of saved items in the library */
+  libraryCardSize: number
+  /** Slider-controlled spacing between saved items in the library */
+  libraryCardPadding: number
 }
 
 export type SortOption = 'newest' | 'oldest'

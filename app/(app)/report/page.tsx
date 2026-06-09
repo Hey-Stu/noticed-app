@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { format } from 'date-fns'
-import { FileText, Hash, Heart, Sparkles } from 'lucide-react'
+import { FileText, Hash, Sparkles, WandSparkles } from 'lucide-react'
 import { PageHeader } from '@/components/page-header'
 import { EmptyState } from '@/components/empty-state'
 import { TypeBadge } from '@/components/type-badge'
@@ -19,7 +19,6 @@ export default function ReportPage() {
     hydrated,
     updateObservation,
     deleteObservation,
-    toggleFavorite,
   } = useObservations()
 
   const [selected, setSelected] = useState<Observation | null>(null)
@@ -130,7 +129,7 @@ export default function ReportPage() {
           {report.highlight ? (
             <section className="space-y-3">
               <h3 className="flex items-center gap-2 font-serif text-lg font-semibold">
-                <Heart className="size-4 text-[var(--type-quote)]" />
+                <WandSparkles className="size-4 text-[var(--type-quote)]" />
                 The one that stayed with you
               </h3>
               <button
@@ -200,7 +199,6 @@ export default function ReportPage() {
         tagSuggestions={tags}
         onUpdate={updateObservation}
         onDelete={deleteObservation}
-        onToggleFavorite={toggleFavorite}
       />
     </div>
   )

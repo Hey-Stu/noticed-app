@@ -17,6 +17,17 @@ const DEFAULT_SETTINGS: NoticedSettings = {
   onboardingDismissed: false,
   samplesSeeded: false,
   samplesCleared: false,
+  libraryCardSize: 50,
+  libraryCardPadding: 50,
+}
+
+function normalizeSettings(
+  settings: Partial<NoticedSettings> | undefined,
+): NoticedSettings {
+  return {
+    ...DEFAULT_SETTINGS,
+    ...settings,
+  }
 }
 
 interface StoreState {
@@ -64,10 +75,11 @@ export function hydrate(): Promise<void> {
   if (hydrating) return hydrating
 
   hydrating = (async () => {
-    const settings = await readStorage<NoticedSettings>(
+    const storedSettings = await readStorage<Partial<NoticedSettings>>(
       STORAGE_KEYS.settings,
       DEFAULT_SETTINGS,
     )
+    const settings = normalizeSettings(storedSettings)
     let observations = await readStorage<Observation[]>(
       STORAGE_KEYS.observations,
       [],
@@ -85,6 +97,13 @@ export function hydrate(): Promise<void> {
       return o
     })
     if (migrated) persistObservations(observations)
+
+    if (
+      storedSettings.libraryCardSize === undefined ||
+      storedSettings.libraryCardPadding === undefined
+    ) {
+      persistSettings(settings)
+    }
 
     // Seed the curated examples whenever the library is empty and the user
     // hasn't *explicitly* cleared everything via Settings. This auto-heals any
